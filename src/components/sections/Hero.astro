@@ -1,0 +1,147 @@
+﻿---
+// Hero / Dashboard section
+---
+<section id="hero" class="hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <h1 class="hero__title">
+        Creando las mejores<br />
+        <span class="hero__title--accent">Soluciones IT.</span>
+      </h1>
+      <p class="hero__subtitle">
+        Rapido, confiable y cercano.
+      </p>
+      <div class="hero__actions">
+        <a href="/cotizar" class="btn btn--primary">Cotizar ahora</a>
+        <a href="/#servicios" class="btn btn--outline">Contacto</a>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat"><strong>98%</strong><span>Satisfacción</span></div>
+        <div class="hero__stat"><strong>100%</strong><span>Soporte brindado</span></div>
+        <div class="hero__stat"><strong>5&#9733;</strong><span>Calificacion promedio</span></div>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="/bannerbg.png" alt="Banner Gauchino" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background-color: var(--color-white);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Columna izquierda: contenido centrado verticalmente */
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 8rem 2rem 4rem 1rem;
+    padding-left: max(2rem, calc((90vw - var(--max-width)) / 2));
+  }
+
+  /* Columna derecha: imagen pegada abajo */
+  .hero__image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero__image img {
+    height: 90vh;
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: bottom center;
+    display: block;
+  }
+
+  /* Elimina el wrapper .hero__container del flujo, ya no lo necesitamos */
+  .hero__container {
+    display: contents;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+    }
+    .hero__content {
+      padding: 7rem 1.5rem 2rem;
+    }
+    .hero__image img {
+      height: 50vw;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .hero__badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    color: var(--color-secondary-light);
+    font-size: 0.85rem;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.2);
+    width: fit-content;
+  }
+
+  .hero__title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+
+  .hero__title--accent { color: var(--color-secondary); }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-primary-light);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn--primary { background-color: var(--color-secondary); color: #fff; }
+
+  .btn--primary:hover { background-color: var(--color-secondary-hover); transform: translateY(-1px); }
+
+  .btn--outline { border: 2px solid var(--color-secondary); color: var(--color-primary); }
+
+  .btn--outline:hover { background: var(--color-secondary); color: var(--color-white); transform: translateY(-1px); }
+
+  .hero__stats {
+    display: flex;
+    gap: 3rem;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__stat { display: flex; flex-direction: column; }
+
+  .hero__stat strong { font-size: 2rem; font-weight: 700; color: var(--color-secondary-light); line-height: 1; }
+
+  .hero__stat span  { font-size: 0.85rem; color: var(--color-primary-light); margin-top: 0.25rem; }
+</style>

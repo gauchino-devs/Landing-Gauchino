@@ -1,0 +1,138 @@
+﻿---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Cotizar">
+  <section class="cotizar">
+    <div class="cotizar__container">
+      <div class="cotizar__header">
+        <a href="/" class="cotizar__back">&#8592; Volver al inicio</a>
+        <span class="section-label">Propuesta sin compromiso</span>
+        <h1>Cotizar proyecto</h1>
+        <p>Completa el formulario y te enviamos una propuesta detallada en menos de 48hs habiles.</p>
+      </div>
+      <form class="cotizar__form" method="POST" action="#">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre completo *</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Juan Perez" required />
+          </div>
+                  <div class="form-group">
+          <label for="servicio">Servicio de interes *</label>
+          <select id="servicio" name="servicio" required>
+            <option value="" disabled selected>Selecciona una opcion</option>
+            <option value="web">Desarrollo Web</option>
+            <option value="mobile">App Movil</option>
+            <option value="cloud">Cloud & DevOps</option>
+            <option value="data">Analytics</option>
+            <option value="automatizacion">Automatizacion</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+          <div class="form-group">
+            <label for="empresa">Empresa/Organización</label>
+            <input type="text" id="empresa" name="empresa" placeholder="Mi Empresa S.A." />
+          </div>
+          
+          <div class="form-group">
+            <label for="rubro">Rubro</label>
+            <input type="text" id="rubro" name="rubro" placeholder="Construccion,Medicina..." />
+          </div>
+          
+        <div class="form-group">
+          <label for="mensaje">Contános tu idea *</label>
+          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Contanos brevemente que necesitas, en que etapa estas y cuando queres empezar..." required></textarea>
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="juan@empresa.com" required />
+          </div>
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 ..." />
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Enviar solicitud de cotizacion &#8594;</button>
+      </form>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .cotizar {
+    min-height: 100vh;
+    padding: 8rem 2rem 5rem;
+    background-color: var(--color-bg-alt);
+  }
+  .cotizar__container { max-width: 720px; margin: 0 auto; }
+  .cotizar__back {
+    display: inline-block;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .cotizar__back:hover { color: var(--color-primary); }
+  .section-label {
+    display: inline-block;
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .cotizar__header h1 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  .cotizar__header p { color: var(--color-text-light); font-size: 1rem; margin-bottom: 2.5rem; }
+  .cotizar__form {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--radius) * 2);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.875rem; font-weight: 600; color: var(--color-text); }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: #fff;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--color-accent); }
+  .form-group textarea { resize: vertical; }
+  .btn-submit {
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    align-self: flex-start;
+  }
+  .btn-submit:hover { background-color: var(--color-accent-hover); transform: translateY(-1px); }
+</style>
