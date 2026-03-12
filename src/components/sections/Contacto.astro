@@ -1,1 +1,152 @@
-﻿<div>Formulario</div>
+﻿
+<h2 class="contacto-title">Comencemos a construir algo juntos</h2>
+<h4 class="contacto-subtitle">
+    Contanos tu idea, problema o tu proyecto. <br /> Respondemos en menos de 24hs.
+</h4>
+<div class="contacto-container">
+  <!-- Parte Superior - Texto Flotante -->
+  <div class="texto-flotante">
+    <!-- Texto aquí -->
+  </div>
+  
+  <!-- Parte Inferior -->
+  <div class="parte-inferior">
+    <!-- Izquierda - Formulario -->
+    <div class="formulario">
+      <input type="text" placeholder="Nombre" />
+      <input type="email" placeholder="Email" />
+      <textarea placeholder="¿En qué podemos ayudarte?"></textarea>
+      <button>Enviar</button>
+    </div>
+    
+    <!-- Derecha - Tres Cuadros -->
+    <div class="cuadros-derecha">
+      <div class="cuadro"></div>
+      <div class="cuadro"></div>
+      <div class="cuadro"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+    .contacto-title {
+        display: flex;
+        color: var(--color-primary);
+        justify-self: center;
+        font-size: 2.2rem;
+        padding-top:5rem;
+    }
+
+        .contacto-subtitle {
+            display: flex;
+            color: var(--color-primary);
+            justify-self: center;
+            font-size: 1.5rem;
+        }
+  .contacto-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+  .texto-flotante {
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .parte-inferior {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    border: 2px solid #333;
+  }
+
+  .formulario input,
+  .formulario textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+  }
+
+  .formulario textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  .formulario button {
+    padding: 0.75rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  .cuadros-derecha {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cuadro {
+    flex: 1;
+    border: 2px solid #333;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .contacto-container {
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+
+    .parte-inferior {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .formulario {
+      padding: 1.5rem;
+      order: 2;
+    }
+
+    .cuadros-derecha {
+      flex-direction: row;
+      order: 1;
+    }
+
+    .cuadro {
+      min-height: 100px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contacto-container {
+      padding: 0.5rem;
+      gap: 1rem;
+    }
+
+    .texto-flotante {
+      padding: 1rem;
+    }
+
+    .formulario {
+      padding: 1rem;
+    }
+
+    .cuadros-derecha {
+      flex-direction: column;
+    }
+  }
+</style>

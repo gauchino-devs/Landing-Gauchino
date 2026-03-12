@@ -1,1 +1,44 @@
-﻿<div>soluciones page</div>
+﻿<div class="soluciones-container">
+  <div class="cuadro-principal">
+    <div class="lado-izquierdo">
+      <!-- Texto aquí -->
+    </div>
+    <div class="lado-derecho">
+      <!-- Foto aquí -->
+    </div>
+  </div>
+</div>
+
+<style>
+  .soluciones-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    min-height: 100vh;
+  }
+
+  .cuadro-principal {
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    width: 100%;
+    height: 90vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .lado-izquierdo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  .lado-derecho {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+</style>

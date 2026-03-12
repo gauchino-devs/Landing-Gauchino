@@ -1,1 +1,131 @@
-﻿<div>Clientes Pagina</div>
+﻿<h2 class="clientes-title">Donde la Tecnología se vuelve simple</h2>
+<div class="clientes-container">
+  <!-- Parte Superior -->
+  <div class="parte-superior">
+    <div class="bloque-texto">
+      <!-- Título y texto -->
+    </div>
+    <div class="cuadro-grande">
+      <!-- Cuadro grande -->
+    </div>
+  </div>
+  
+  <!-- Parte Inferior -->
+  <div class="parte-inferior">
+    <div class="resena-1">
+      <!-- Reseña cliente 1 -->
+    </div>
+    <div class="resena-2">
+      <!-- Reseña cliente 2 -->
+    </div>
+    <div class="cta">
+      <!-- Call to action -->
+    </div>
+  </div>
+</div>
+
+<style>
+  .clientes-title {
+    display: flex;
+    color: var(--color-primary);
+    justify-self: center;
+    font-size: 2.2rem;
+    padding-top: 2rem;
+  }
+
+  .clientes-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .parte-superior {
+    flex: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .bloque-texto {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    border: 2px solid #333;
+  }
+
+  .cuadro-grande {
+    border: 2px solid #333;
+  }
+
+  .parte-inferior {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .resena-1,
+  .resena-2,
+  .cta {
+    border: 2px solid #333;
+    padding: 1.5rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .clientes-container {
+      padding: 1rem;
+      gap: 1rem;
+      height: auto;
+    }
+
+    .parte-superior {
+      grid-template-columns: 1fr;
+    }
+
+    .bloque-texto {
+      order: 1;
+      padding: 1.5rem;
+    }
+
+    .cuadro-grande {
+      order: 2;
+      min-height: 250px;
+    }
+
+    .parte-inferior {
+      grid-template-columns: 1fr;
+    }
+
+    .resena-1 {
+      order: 3;
+    }
+
+    .resena-2 {
+      order: 4;
+    }
+
+    .cta {
+      order: 5;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .clientes-container {
+      padding: 0.5rem;
+    }
+
+    .bloque-texto {
+      padding: 1rem;
+    }
+
+    .resena-1,
+    .resena-2,
+    .cta {
+      padding: 1rem;
+    }
+  }
+</style>
