@@ -5,22 +5,46 @@
 
   <!-- Lado Izquierdo -->
   <div class="left-side">
-    <div class="box-grande"></div>
+    <div class="box-grande">
+      <h3 class="box-grande-titulo">Desarrollo de Software personalizado</h3>
+      <p class="box-grande-desc">Arquitecturas robustas y escalables, construidas a medida para resolver los desafios mas complejos de tu negocio. Desde MVPs hasta plataformas enterprise.</p>
+    </div>
     <div class="boxes-chicos">
-      <div class="box-chico"></div>
-      <div class="box-chico"></div>
+      <div class="box-chico">
+        <h3 class="box-chico-titulo">ERP/CRM</h3>
+        <p class="box-chico-desc">Sistemas de gestión personalizados que se adaptan a tu operación.</p>
+      </div>
+      <div class="box-chico">
+        <h3 class="box-chico-titulo">Diseño Web</h3>
+        <p class="box-chico-desc">Interfaces que cautivan, convierten y generan lealtad de marca.</p>
+      </div>
     </div>
   </div>
   
   <!-- Lado Derecho -->
   <div class="right-side">
     <div class="boxes-arriba">
-      <div class="box-derecho"></div>
-      <div class="box-derecho"></div>
-      <div class="box-derecho"></div>
-      <div class="box-derecho"></div>
+      <div class="box-derecho">
+        <h3 class="box-derecho-titulo">Integraciones</h3>
+        <p class="box-derecho-desc">Conectamos tus sistemas y APIs para que todo funcione como uno.</p>
+      </div>
+      <div class="box-derecho">
+        <h3 class="box-derecho-titulo">Mobile</h3>
+        <p class="box-derecho-desc">Apps nativas e híbridas de alto rendimiento para iOS y Android.</p>
+      </div>
+      <div class="box-derecho">
+        <h3 class="box-derecho-titulo">IA</h3>
+        <p class="box-derecho-desc">Modelos inteligentes que automatizan y generan valor estratégico.</p>
+      </div>
+      <div class="box-derecho">
+        <h3 class="box-derecho-titulo">Automatizaciones</h3>
+        <p class="box-derecho-desc">Flujos de trabajo inteligentes que eliminan tareas repetitivas.</p>
+      </div>
     </div>
-    <div class="box-abajo"></div>
+    <div class="box-abajo">
+      <h3 class="box-abajo-titulo">Soporte</h3>
+      <p class="box-abajo-desc">Acompañamiento técnico continuo para que tu producto nunca se detenga.</p>
+    </div>
   </div>
 </div>
 
@@ -48,6 +72,26 @@
   .box-grande {
     flex: 3;
     border: 2px solid #333;
+    background-color: var(--color-primary);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4rem;
+    border-radius: var(--radius);
+  }
+
+  .box-grande-titulo {
+    color: var(--color-white);
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .box-grande-desc {
+    color: var(--color-white);
+    font-size: 1rem;
+    line-height: 1.6;
+    opacity: 0.85;
   }
 
   .boxes-chicos {
@@ -59,6 +103,26 @@
 
   .box-chico {
     border: 2px solid #333;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .box-chico-titulo {
+    color: var(--color-white);
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  .box-chico-desc {
+    color: var(--color-white);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    opacity: 0.85;
   }
 
   .right-side {
@@ -77,11 +141,51 @@
 
   .box-derecho {
     border: 2px solid #333;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .box-derecho-titulo {
+    color: var(--color-white);
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .box-derecho-desc {
+    color: var(--color-white);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    opacity: 0.85;
   }
 
   .box-abajo {
     flex: 1;
     border: 2px solid #333;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .box-abajo-titulo {
+    color: var(--color-white);
+    font-size: 1.2rem;
+    line-height: 1.2;
+  }
+
+  .box-abajo-desc {
+    color: var(--color-white);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    opacity: 0.85;
   }
 
   /* Responsive */
