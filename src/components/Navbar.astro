@@ -29,6 +29,26 @@
       </div>
       <a href="/cotizar" class="navbar__cta">Cotizar</a>
     </div>
+
+    <!-- Hamburger (mobile only) -->
+    <label class="hamburger">
+      <input type="checkbox" id="hamburger-check" />
+      <svg viewBox="0 0 32 32">
+        <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+        <path class="line" d="M7 16 27 16"></path>
+      </svg>
+    </label>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mobile-menu__nav">
+      <a href="/#servicios">Servicios</a>
+      <a href="/#soluciones">Soluciones</a>
+      <a href="/#clientes">Clientes</a>
+      <a href="/#contacto">Contacto</a>
+    </nav>
+    <a href="/cotizar" class="navbar__cta mobile-menu__cta">Cotizar</a>
   </div>
 </header>
 
@@ -87,7 +107,103 @@
   }
   .navbar__cta:hover { background-color: var(--color-secondary-hover) !important; }
 
-  /* ── Language selector ── */
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    cursor: pointer;
+  }
+
+  .hamburger input {
+    display: none;
+  }
+
+  .hamburger svg {
+    height: 2.2em;
+    transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line {
+    fill: none;
+    stroke: white;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 3;
+    transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .line-top-bottom {
+    stroke-dasharray: 12 63;
+  }
+
+  .hamburger input:checked + svg {
+    transform: rotate(-45deg);
+  }
+
+  .hamburger input:checked + svg .line-top-bottom {
+    stroke-dasharray: 20 300;
+    stroke-dashoffset: -32.42;
+  }
+
+  /* ── Mobile menu ── */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--color-primary);
+    overflow: hidden;
+    max-height: 0;
+    padding: 0 2rem;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+  }
+
+  .mobile-menu.is-open {
+    max-height: 400px;
+    padding: 1.25rem 2rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .mobile-menu__nav a {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu__nav a:hover { color: #fff; }
+
+  .mobile-menu__cta {
+    align-self: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .navbar__nav {
+      display: none;
+    }
+
+    .navbar__cta:not(.mobile-menu__cta) {
+      display: none;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    .mobile-menu {
+      display: flex;
+    }
+
+    .navbar__container {
+      grid-template-columns: 1fr auto auto;
+    }
+  }
   .navbar__actions {
     display: flex;
     align-items: center;
@@ -174,6 +290,22 @@
   const btn      = selector.querySelector('.lang-selector__btn')!;
   const label    = selector.querySelector('.lang-selector__label')!;
   const options  = selector.querySelectorAll('.lang-selector__option');
+
+  // Hamburger toggle
+  const hamburgerCheck = document.getElementById('hamburger-check') as HTMLInputElement;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+
+  hamburgerCheck?.addEventListener('change', () => {
+    mobileMenu.classList.toggle('is-open', hamburgerCheck.checked);
+  });
+
+  // Close mobile menu when a link is clicked
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerCheck.checked = false;
+      mobileMenu.classList.remove('is-open');
+    });
+  });
 
   btn.addEventListener('click', (e) => {
     e.stopPropagation();

@@ -1,0 +1,121 @@
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-texto">
+      <h2 class="cta-titulo">¿Listo para transformar tu negocio con software a medida?</h2>
+      <p class="cta-parrafo">Contanos tu idea y te ayudamos a convertirla en una solución real. Sin vueltas, sin tecnicismos.</p>
+    </div>
+    <img src="/ctamann.png" alt="" class="cta-man" />
+    <a href="/cotizar" class="cta-boton">Cotizá tu proyecto</a>
+  </div>
+</section>
+
+<style>
+  .cta-section {
+    width: 100%;
+    padding: 2rem 0;
+    overflow: visible;
+  }
+
+  .cta-inner {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    padding: 3.5rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    overflow: visible;
+  }
+
+  .cta-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 60%;
+  }
+
+  .cta-titulo {
+    color: var(--color-white);
+    font-size: 2rem;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .cta-parrafo {
+    color: var(--color-secondary-light);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .cta-boton {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 0.85rem 2rem;
+    border-radius: 999px;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 0 20px 4px rgba(204, 175, 255, 0.35);
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-man {
+    position: absolute;
+    bottom: 0;
+    right: 13rem;
+    height: 115%;
+    width: auto;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .cta-boton:hover {
+    background-color: var(--color-secondary-light);
+    box-shadow: 0 0 28px 8px rgba(204, 175, 255, 0.55);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2.5rem 2rem;
+    }
+
+    .cta-texto {
+      max-width: 100%;
+    }
+
+    .cta-titulo {
+      font-size: 1.6rem;
+    }
+
+    .cta-man {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cta-section {
+      padding: 1rem;
+    }
+
+    .cta-inner {
+      padding: 2rem 1.5rem;
+    }
+
+    .cta-titulo {
+      font-size: 1.35rem;
+    }
+
+    .cta-boton {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

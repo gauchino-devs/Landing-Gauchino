@@ -24,8 +24,8 @@
 
 :root {
   /* Paleta */
-  --color-primary:       #1E113C;
-  --color-primary-light: #2D1B5A;
+  --color-primary:        #2D1B5A  /*#1E113C*/;
+  --color-primary-light: #3a2375;
   --color-secondary:        #4601FA;
   --color-secondary-hover:  #3700C8;
   --color-secondary-light:  #CCAFFF;

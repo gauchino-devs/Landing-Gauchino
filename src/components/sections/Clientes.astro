@@ -1,36 +1,54 @@
-﻿<h2 class="clientes-title">Donde la Tecnología se vuelve simple</h2>
-<div class="clientes-container">
+﻿<div class="clientes-container">
   <!-- Parte Superior -->
   <div class="parte-superior">
     <div class="bloque-texto">
-      <!-- Título y texto -->
+      <h2 class="clientes-title">Donde la Tecnología <span class="highlight">se vuelve simple</span></h2>
+      <p class="bloque-parrafo">En Gauchino desarrollamos software con foco en el usuario. Creemos que la tecnología funciona mejor cuando es simple, útil y se disfruta usar.</p>
     </div>
     <div class="cuadro-grande">
-      <!-- Cuadro grande -->
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
     </div>
   </div>
   
   <!-- Parte Inferior -->
+  <h3 class="inferior-titulo">¿Qué dicen quienes trabajaron con Nosotros?</h3>
   <div class="parte-inferior">
     <div class="resena-1">
-      <!-- Reseña cliente 1 -->
+      <p class="resena-autor">Kevin &mdash; Stockeate</p>
+      <span class="resena-sep"></span>
+      <p class="resena-texto">&ldquo;Gauchino nos creó un sistema que se adaptó exactamente a cómo trabajamos. Simple, rápido y sin vueltas. Nos cambió el día a día.&rdquo;</p>
     </div>
     <div class="resena-2">
-      <!-- Reseña cliente 2 -->
+      <p class="resena-autor">Matías &mdash; Presupuestate</p>
+      <span class="resena-sep"></span>
+      <p class="resena-texto">&ldquo;Desde que empezamos con Gauchino, el equipo estuvo siempre cerca. Entendieron lo que necesitábamos y lo hicieron realidad.&rdquo;</p>
     </div>
     <div class="cta">
-      <!-- Call to action -->
+      <p class="cta-titulo">¿Querés ser el próximo caso de éxito?</p>
+      <a href="#contacto" class="cta-btn">Contáctanos</a>
     </div>
   </div>
 </div>
 
 <style>
   .clientes-title {
-    display: flex;
     color: var(--color-primary);
-    justify-self: center;
     font-size: 2.2rem;
-    padding-top: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1.25rem;
+  }
+
+  .highlight {
+    color: var(--color-secondary);
+  }
+
+  .bloque-parrafo {
+    color: var(--color-primary);
+    font-size: 1.05rem;
+    line-height: 1.7;
   }
 
   .clientes-container {
@@ -53,11 +71,56 @@
     flex-direction: column;
     justify-content: center;
     padding: 2rem;
-    border: 2px solid #333;
   }
 
   .cuadro-grande {
-    border: 2px solid #333;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    
+  }
+
+  .celda {
+    background-color: var(--color-primary);
+    display: flex;
+    border-radius: var(--radius);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(70, 1, 250, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .celda::after {
+    content: '';
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(45px);
+    opacity: 0.45;
+    pointer-events: none;
+  }
+
+  .celda-num {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: var(--color-secondary);
+    line-height: 1;
+  }
+
+  .celda-label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-white);
+    letter-spacing: 0.03em;
   }
 
   .parte-inferior {
@@ -68,10 +131,77 @@
   }
 
   .resena-1,
-  .resena-2,
+  .resena-2 {
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .resena-autor {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-secondary-light);
+    letter-spacing: 0.04em;
+  }
+
+  .resena-sep {
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--color-secondary);
+    border-radius: 999px;
+  }
+
+  .resena-texto {
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--color-white);
+  }
+
+  .inferior-titulo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    padding: 0 0.25rem;
+  }
+
   .cta {
-    border: 2px solid #333;
-    padding: 1.5rem;
+    background-color: var(--color-primary);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .cta-titulo {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.35;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 0.65rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 18px 4px rgba(204, 175, 255, 0.45);
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    background-color: #6117ff;
+    box-shadow: 0 0 15px 3px rgba(174, 127, 254, 0.6);
   }
 
   /* Responsive */

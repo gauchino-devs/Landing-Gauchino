@@ -1,13 +1,55 @@
 ﻿<div class="soluciones-container">
   <div class="cuadro-principal">
     <div class="lado-izquierdo">
-      <!-- Texto aquí -->
+      <div class="lado-izquierdo-contenido">
+        <h2 class="soluciones-titulo">El software correcto <span class="soluciones-highlight">cambia negocios</span></h2>
+        <p class="soluciones-subtitulo">En Gauchino desarrollamos sistemas a medida que automatizan procesos, optimizan tiempos y centralizan la gestión del negocio.</p>
+        <p class="soluciones-desc">Organizá tu negocio de forma simple y clara. Nuestro sistema permite registrar movimientos, mantener el stock actualizado y tener control total sobre los productos para evitar errores, faltantes y desorden.</p>
+      </div>
     </div>
     <div class="lado-derecho">
-      <!-- Foto aquí -->
+      <div class="carousel">
+        <div class="carousel-track">
+          <img class="carousel-img" src="/stockeate.webp" alt="Stockeate" />
+          <img class="carousel-img" src="/presupuestate.webp" alt="Presupuestate" />
+          <img class="carousel-img" src="/flexus.webp" alt="Flexus" />
+        </div>
+        <button class="carousel-btn carousel-btn--prev" aria-label="Anterior">
+          <img src="/arrow_back.svg" alt="Anterior" />
+        </button>
+        <button class="carousel-btn carousel-btn--next" aria-label="Siguiente">
+          <img src="/arrow_forward.svg" alt="Siguiente" />
+        </button>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  const track = document.querySelector('.carousel-track') as HTMLElement;
+  const imgs = document.querySelectorAll('.carousel-img');
+  const desc = document.querySelector('.soluciones-desc') as HTMLElement;
+  let current = 0;
+
+  const textos = [
+    'Organizá tu negocio de forma simple y clara. Nuestro sistema permite registrar movimientos, mantener el stock actualizado y tener control total sobre los productos para evitar errores, faltantes y desorden.',
+    'Simplicá el proceso de ventas y digitalizá la información de tus clientes. Automatizamos tareas repetitivas y clasificamos datos para que puedas gestionar oportunidades, hacer seguimiento y vender de manera más eficiente.',
+    'Centralizá la información clave y proyectá tus gastos. Presupuestá tu desarrollo inmobiliario, administrá tu base de clientes y organizá pagos o comisiones desde un mismo sistema pensado para simplificar la gestión diaria.',
+  ];
+
+  function goTo(index: number) {
+    current = (index + imgs.length) % imgs.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    desc.style.opacity = '0';
+    setTimeout(() => {
+      desc.textContent = textos[current];
+      desc.style.opacity = '1';
+    }, 200);
+  }
+
+  document.querySelector('.carousel-btn--prev')?.addEventListener('click', () => goTo(current - 1));
+  document.querySelector('.carousel-btn--next')?.addEventListener('click', () => goTo(current + 1));
+</script>
 
 <style>
   .soluciones-container {
@@ -35,10 +77,162 @@
     padding: 3rem;
   }
 
+  .lado-izquierdo-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .soluciones-titulo {
+    color: var(--color-white);
+    font-size: 2.4rem;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  .soluciones-highlight {
+    color: var(--color-secondary);
+  }
+
+  .soluciones-subtitulo {
+    color: var(--color-secondary-light);
+    font-size: 0.95rem;
+    line-height: 1.65;
+  }
+
+  .soluciones-desc {
+    color: var(--color-white);
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    transition: opacity 0.2s ease;
+  }
+
   .lado-derecho {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3rem;
+    position: relative;
   }
-</style>
+
+  .lado-derecho::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(80px);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .carousel {
+    position: relative;
+    background-color: var(--color-primary-light);
+    border-radius: var(--radius);
+    width: 85%;
+    height: 80%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.4s ease;
+  }
+
+  .carousel-img {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+    pointer-events: none;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(70, 1, 250, 0.35);
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    z-index: 2;
+  }
+
+  .carousel-btn:hover {
+    background: rgba(70, 1, 250, 0.65);
+  }
+
+  .carousel-btn--prev { left: 0.75rem; }
+  .carousel-btn--next { right: 0.75rem; }
+
+  .carousel-btn img {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .soluciones-container {
+      padding: 1rem;
+    }
+
+    .cuadro-principal {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      height: auto;
+    }
+
+    .lado-izquierdo {
+      padding: 2rem 1.5rem 1rem;
+    }
+
+    .soluciones-titulo {
+      font-size: 1.8rem;
+      text-align: center;
+    }
+
+    .lado-derecho {
+      padding: 1rem 1.5rem 2rem;
+    }
+
+    .carousel {
+      width: 100%;
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lado-izquierdo {
+      padding: 1.5rem 1rem 0.75rem;
+    }
+
+    .soluciones-titulo {
+      font-size: 1.5rem;
+    }
+
+    .lado-derecho {
+      padding: 0.75rem 1rem 1.5rem;
+    }
+
+    .carousel {
+      height: 220px;
+    }
+  }</style>

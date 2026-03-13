@@ -79,6 +79,22 @@
     justify-content: center;
     gap: 4rem;
     border-radius: var(--radius);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .box-grande::after {
+    content: '';
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(60px);
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .box-grande-titulo {
@@ -110,6 +126,22 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .box-chico::after {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(45px);
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .box-chico-titulo {
@@ -148,6 +180,22 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .box-derecho::after {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(45px);
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .box-derecho-titulo {
@@ -173,6 +221,22 @@
     flex-direction: column;
     justify-content: center;
     gap: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .box-abajo::after {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    right: -2rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(45px);
+    opacity: 0.45;
+    pointer-events: none;
   }
 
   .box-abajo-titulo {
@@ -227,6 +291,12 @@
   }
 
   @media (max-width: 480px) {
+    .servicios-title {
+      font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    }
+
     .servicios-container {
       padding: 0.5rem;
       gap: 0.75rem;
