@@ -1,11 +1,16 @@
+---
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations(Astro.currentLocale ?? 'es');
+const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.currentLocale === 'pt' ? '/pt/cotizar' : '/cotizar';
+---
 <section class="cta-section">
-  <div class="cta-inner">
+  <div class="cta-inner" data-aos="zoom-in" data-aos-duration="700">
     <div class="cta-texto">
-      <h2 class="cta-titulo">¿Listo para transformar tu negocio con software a medida?</h2>
-      <p class="cta-parrafo">Contanos tu idea y te ayudamos a convertirla en una solución real. Sin vueltas, sin tecnicismos.</p>
+      <h2 class="cta-titulo">{t['cta.title']}</h2>
+      <p class="cta-parrafo">{t['cta.desc']}</p>
     </div>
     <img src="/ctamann.png" alt="" class="cta-man" />
-    <a href="/cotizar" class="cta-boton">Cotizá tu proyecto</a>
+    <a href={cotizarHref} class="cta-boton">{t['cta.btn']}</a>
   </div>
 </section>
 

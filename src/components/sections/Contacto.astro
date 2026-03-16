@@ -1,41 +1,42 @@
-﻿
-<h2 class="contacto-title">Comencemos a construir algo juntos</h2>
-<h4 class="contacto-subtitle">
-    Contanos tu idea, problema o tu proyecto. <br /> Respondemos en menos de 24hs.
+﻿---
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations(Astro.currentLocale ?? 'es');
+const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.currentLocale === 'pt' ? '/pt/cotizar' : '/cotizar';
+---
+<section id="contacto">
+<h2 class="contacto-title" data-aos="fade-up">{t['con.title']}</h2>
+<h4 class="contacto-subtitle" data-aos="fade-up" data-aos-delay="100">
+    {t['con.subtitle']} <br /> {t['con.subtitle2']}
 </h4>
 <div class="contacto-container">
-  <!-- Parte Superior - Texto Flotante -->
-  <div class="texto-flotante">
-    <!-- Texto aquí -->
-  </div>
-  
   <!-- Parte Inferior -->
   <div class="parte-inferior">
     <!-- Izquierda - Formulario -->
-    <div class="formulario">
-      <input type="text" placeholder="Nombre" />
-      <input type="email" placeholder="Email" />
-      <textarea placeholder="¿En qué podemos ayudarte?"></textarea>
-      <button>Enviar</button>
+    <div class="formulario" data-aos="fade-right" data-aos-delay="150">
+      <input type="text" placeholder={t['con.name']} />
+      <input type="email" placeholder={t['con.email']} />
+      <textarea placeholder={t['con.message']}></textarea>
+      <button>{t['con.send']}</button>
     </div>
     
     <!-- Derecha - Tres Cuadros -->
-    <div class="cuadros-derecha">
+    <div class="cuadros-derecha" data-aos="fade-left" data-aos-delay="200">
       <div class="cuadro">
         <span class="cuadro-label">Email</span>
         <span class="cuadro-valor">informacion@gauchino.com</span>
       </div>
       <div class="cuadro">
-        <span class="cuadro-label">Respuesta</span>
-        <span class="cuadro-valor">Mismo Día &mdash; Menos de 24hs</span>
+        <span class="cuadro-label">{t['con.resp.label']}</span>
+        <span class="cuadro-valor">{t['con.resp.value']}</span>
       </div>
       <div class="cuadro cuadro-cta">
-        <span class="cuadro-label">¿Buscás rapidez en la solución?</span>
-        <a href="/cotizar" class="btn-cotizar">Cotizar</a>
+        <span class="cuadro-label">{t['con.cta.label']}</span>
+        <a href={cotizarHref} class="btn-cotizar">{t['con.cta.btn']}</a>
       </div>
     </div>
   </div>
 </div>
+</section>
 
 <style>
     .contacto-title {
@@ -53,19 +54,11 @@
             font-size: 1.5rem;
         }
   .contacto-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
     padding: 2rem;
-  }
-
-  .texto-flotante {
-    padding: 2rem;
-    text-align: center;
+    padding-bottom: 4rem;
   }
 
   .parte-inferior {
-    flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -78,6 +71,7 @@
     padding: 2rem;
     background-color: var(--color-primary);
     border-radius: var(--radius);
+    height: 100%;
   }
 
   .formulario input,
@@ -96,7 +90,8 @@
   }
 
   .formulario textarea {
-    min-height: 150px;
+    flex: 1;
+    min-height: 120px;
     resize: vertical;
   }
 
@@ -222,6 +217,16 @@
 
     .cuadros-derecha {
       flex-direction: column;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .contacto-title    { font-size: 2.8rem; }
+    .contacto-subtitle { font-size: 1.75rem; }
+
+    .contacto-container {
+      max-width: 1380px;
+      margin: 0 auto;
     }
   }
 </style>

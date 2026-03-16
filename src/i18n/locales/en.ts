@@ -1,0 +1,81 @@
+export default {
+  // Navbar
+  'nav.servicios': 'Services',
+  'nav.soluciones': 'Solutions',
+  'nav.clientes': 'Clients',
+  'nav.contacto': 'Contact',
+  'nav.cotizar': 'Get a Quote',
+
+  // Hero
+  'hero.title1': 'Building the best',
+  'hero.title2': 'IT Solutions.',
+  'hero.subtitle': 'Fast, reliable and close to you.',
+  'hero.cta1': 'Get a quote',
+  'hero.cta2': 'Contact us',
+  'hero.stat1.value': '100%',
+  'hero.stat1.label': 'Satisfaction',
+  'hero.stat2.value': '100%',
+  'hero.stat2.label': 'Support provided',
+  'hero.stat3.value': '5★',
+  'hero.stat3.label': 'Average rating',
+
+  // Servicios
+  'serv.heading': 'What we do',
+  'serv.dev.title': 'Custom Software Development',
+  'serv.dev.desc': 'Robust and scalable architectures, built to measure to solve the most complex challenges of your business. From MVPs to enterprise platforms.',
+  'serv.erp.title': 'ERP/CRM',
+  'serv.erp.desc': 'Custom management systems that adapt to your operation.',
+  'serv.web.title': 'Web Design',
+  'serv.web.desc': 'Interfaces that captivate, convert and generate brand loyalty.',
+  'serv.int.title': 'Integrations',
+  'serv.int.desc': 'We connect your systems and APIs so everything works as one.',
+  'serv.mob.title': 'Mobile',
+  'serv.mob.desc': 'High-performance native and hybrid apps for iOS and Android.',
+  'serv.ai.title': 'AI',
+  'serv.ai.desc': 'Intelligent models that automate and generate strategic value.',
+  'serv.aut.title': 'Automations',
+  'serv.aut.desc': 'Smart workflows that eliminate repetitive tasks.',
+  'serv.sup.title': 'Support',
+  'serv.sup.desc': 'Continuous technical support so your product never stops.',
+
+  // CTA
+  'cta.title': 'Ready to transform your business with custom software?',
+  'cta.desc': 'Tell us your idea and we will help you turn it into a real solution. No fuss, no jargon.',
+  'cta.btn': 'Quote your project',
+
+  // Soluciones
+  'sol.title1': 'The right software',
+  'sol.title2': 'changes businesses',
+  'sol.subtitle': 'At Gauchino we develop tailor-made systems that automate processes, optimize time and centralize business management.',
+  'sol.desc1': 'Organize your business in a simple and clear way. Our system allows you to record movements, keep stock updated and have full control over products to avoid errors, shortages and disorder.',
+  'sol.desc2': 'Simplify the sales process and digitize your customer information. We automate repetitive tasks and classify data so you can manage opportunities, follow up and sell more efficiently.',
+  'sol.desc3': 'Centralize key information and project your expenses. Budget your real estate development, manage your client base and organize payments or commissions from a single system designed to simplify daily management.',
+  'sol.prev': 'Previous',
+  'sol.next': 'Next',
+
+  // Clientes
+  'cli.title1': 'Where Technology',
+  'cli.title2': 'becomes simple',
+  'cli.desc': 'At Gauchino we develop software focused on the user. We believe technology works best when it is simple, useful and enjoyable to use.',
+  'cli.stat.label': 'Closeness',
+  'cli.reviews.heading': 'What do those who worked with us say?',
+  'cli.review1.author': 'Kevin — Futuro Materiales',
+  'cli.review1.text': '"Gauchino created a system that adapted exactly to how we work. Simple, fast and straightforward. It changed our day to day."',
+  'cli.review2.author': 'Matías — Principado Ciudad Náutica',
+  'cli.review2.text': '"Since we started with Gauchino, the team was always close. They understood what we needed and made it happen."',
+  'cli.cta.title': 'Want to be the next success story?',
+  'cli.cta.btn': 'Contact us',
+
+  // Contacto
+  'con.title': "Let's start building something together",
+  'con.subtitle': 'Tell us your idea, problem or project.',
+  'con.subtitle2': 'We respond in less than 24hs.',
+  'con.name': 'Name',
+  'con.email': 'Email',
+  'con.message': 'How can we help you?',
+  'con.send': 'Send',
+  'con.resp.label': 'Response',
+  'con.resp.value': 'Same Day — Less than 24hs',
+  'con.cta.label': 'Looking for a fast solution?',
+  'con.cta.btn': 'Get a quote',
+} as const;

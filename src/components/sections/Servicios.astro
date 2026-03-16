@@ -1,22 +1,25 @@
-﻿<h2 class="servicios-title">
-        Lo que hacemos
-    </h2>
+﻿---
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations(Astro.currentLocale ?? 'es');
+---
+<section id="servicios">
+<h2 class="servicios-title" data-aos="fade-up">{t['serv.heading']}</h2>
 <div class="servicios-container">
 
   <!-- Lado Izquierdo -->
   <div class="left-side">
-    <div class="box-grande">
-      <h3 class="box-grande-titulo">Desarrollo de Software personalizado</h3>
-      <p class="box-grande-desc">Arquitecturas robustas y escalables, construidas a medida para resolver los desafios mas complejos de tu negocio. Desde MVPs hasta plataformas enterprise.</p>
+    <div class="box-grande" data-aos="fade-right" data-aos-delay="100">
+      <h3 class="box-grande-titulo">{t['serv.dev.title']}</h3>
+      <p class="box-grande-desc">{t['serv.dev.desc']}</p>
     </div>
     <div class="boxes-chicos">
-      <div class="box-chico">
-        <h3 class="box-chico-titulo">ERP/CRM</h3>
-        <p class="box-chico-desc">Sistemas de gestión personalizados que se adaptan a tu operación.</p>
+      <div class="box-chico" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="box-chico-titulo">{t['serv.erp.title']}</h3>
+        <p class="box-chico-desc">{t['serv.erp.desc']}</p>
       </div>
-      <div class="box-chico">
-        <h3 class="box-chico-titulo">Diseño Web</h3>
-        <p class="box-chico-desc">Interfaces que cautivan, convierten y generan lealtad de marca.</p>
+      <div class="box-chico" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="box-chico-titulo">{t['serv.web.title']}</h3>
+        <p class="box-chico-desc">{t['serv.web.desc']}</p>
       </div>
     </div>
   </div>
@@ -24,29 +27,30 @@
   <!-- Lado Derecho -->
   <div class="right-side">
     <div class="boxes-arriba">
-      <div class="box-derecho">
-        <h3 class="box-derecho-titulo">Integraciones</h3>
-        <p class="box-derecho-desc">Conectamos tus sistemas y APIs para que todo funcione como uno.</p>
+      <div class="box-derecho" data-aos="fade-up" data-aos-delay="150">
+        <h3 class="box-derecho-titulo">{t['serv.int.title']}</h3>
+        <p class="box-derecho-desc">{t['serv.int.desc']}</p>
       </div>
-      <div class="box-derecho">
-        <h3 class="box-derecho-titulo">Mobile</h3>
-        <p class="box-derecho-desc">Apps nativas e híbridas de alto rendimiento para iOS y Android.</p>
+      <div class="box-derecho" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="box-derecho-titulo">{t['serv.mob.title']}</h3>
+        <p class="box-derecho-desc">{t['serv.mob.desc']}</p>
       </div>
-      <div class="box-derecho">
-        <h3 class="box-derecho-titulo">IA</h3>
-        <p class="box-derecho-desc">Modelos inteligentes que automatizan y generan valor estratégico.</p>
+      <div class="box-derecho" data-aos="fade-up" data-aos-delay="250">
+        <h3 class="box-derecho-titulo">{t['serv.ai.title']}</h3>
+        <p class="box-derecho-desc">{t['serv.ai.desc']}</p>
       </div>
-      <div class="box-derecho">
-        <h3 class="box-derecho-titulo">Automatizaciones</h3>
-        <p class="box-derecho-desc">Flujos de trabajo inteligentes que eliminan tareas repetitivas.</p>
+      <div class="box-derecho" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="box-derecho-titulo">{t['serv.aut.title']}</h3>
+        <p class="box-derecho-desc">{t['serv.aut.desc']}</p>
       </div>
     </div>
-    <div class="box-abajo">
-      <h3 class="box-abajo-titulo">Soporte</h3>
-      <p class="box-abajo-desc">Acompañamiento técnico continuo para que tu producto nunca se detenga.</p>
+    <div class="box-abajo" data-aos="fade-left" data-aos-delay="350">
+      <h3 class="box-abajo-titulo">{t['serv.sup.title']}</h3>
+      <p class="box-abajo-desc">{t['serv.sup.desc']}</p>
     </div>
   </div>
 </div>
+</section>
 
 <style>
     .servicios-title{
@@ -353,5 +357,26 @@
       order: 8;
       min-height: 150px;
     }
+  }
+
+  @media (min-width: 1440px) {
+    .servicios-title {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .servicios-container {
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    .box-grande-titulo { font-size: 2.2rem; }
+    .box-grande-desc   { font-size: 1.1rem; }
+    .box-chico-titulo  { font-size: 1.4rem; }
+    .box-chico-desc    { font-size: 0.95rem; }
+    .box-derecho-titulo { font-size: 1.4rem; }
+    .box-derecho-desc  { font-size: 0.95rem; }
+    .box-abajo-titulo  { font-size: 1.4rem; }
+    .box-abajo-desc    { font-size: 0.95rem; }
   }
 </style>

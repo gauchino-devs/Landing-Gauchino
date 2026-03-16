@@ -35,7 +35,7 @@
 
   /* Tipografía */
   --font-sans:    'Inter', 'Segoe UI', system-ui, sans-serif;
-  --font-display: 'Lastica', 'Inter', system-ui, sans-serif; /* activa Lastica cuando tengas los archivos */
+  --font-display: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
 
   /* Layout */
   --section-padding: 5rem 2rem;
@@ -45,6 +45,14 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --max-width: 1380px;
+    --section-padding: 6rem 3rem;
+  }
 }
 
 body {

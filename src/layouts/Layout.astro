@@ -2,12 +2,14 @@
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import 'aos/dist/aos.css';
 
 interface Props { title?: string; }
 const { title = 'Gauchino' } = Astro.props;
+const lang = Astro.currentLocale ?? 'es';
 ---
 <!doctype html>
-<html lang="es">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,6 +23,15 @@ const { title = 'Gauchino' } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <script>
+      import AOS from 'aos';
+      AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 60,
+      });
+    </script>
     <a
       href="https://wa.me/5491140232475"
       target="_blank"

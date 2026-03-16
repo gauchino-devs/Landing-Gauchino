@@ -1,27 +1,30 @@
 ﻿---
-// Hero / Dashboard section
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations(Astro.currentLocale ?? 'es');
+const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.currentLocale === 'pt' ? '/pt/cotizar' : '/cotizar';
+const serviciosHref = Astro.currentLocale === 'en' ? '/en/#servicios' : Astro.currentLocale === 'pt' ? '/pt/#servicios' : '/#servicios';
 ---
 <section id="hero" class="hero">
   <div class="hero__container">
-    <div class="hero__content">
+    <div class="hero__content" data-aos="fade-right" data-aos-duration="800">
       <h1 class="hero__title">
-        Creando las mejores<br />
-        <span class="hero__title--accent">Soluciones IT.</span>
+        {t['hero.title1']}<br />
+        <span class="hero__title--accent">{t['hero.title2']}</span>
       </h1>
-      <p class="hero__subtitle">
-        Rapido, confiable y cercano.
+      <p class="hero__subtitle" data-aos="fade-right" data-aos-delay="150">
+        {t['hero.subtitle']}
       </p>
-      <div class="hero__actions">
-        <a href="/cotizar" class="btn btn--primary">Cotizar ahora</a>
-        <a href="/#servicios" class="btn btn--outline">Contacto</a>
+      <div class="hero__actions" data-aos="fade-right" data-aos-delay="250">
+        <a href={cotizarHref} class="btn btn--primary">{t['hero.cta1']}</a>
+        <a href={serviciosHref} class="btn btn--outline">{t['hero.cta2']}</a>
       </div>
-      <div class="hero__stats">
-        <div class="hero__stat"><strong>98%</strong><span>Satisfacción</span></div>
-        <div class="hero__stat"><strong>100%</strong><span>Soporte brindado</span></div>
-        <div class="hero__stat"><strong>5&#9733;</strong><span>Calificacion promedio</span></div>
+      <div class="hero__stats" data-aos="fade-up" data-aos-delay="350">
+        <div class="hero__stat"><strong>{t['hero.stat1.value']}</strong><span>{t['hero.stat1.label']}</span></div>
+        <div class="hero__stat"><strong>{t['hero.stat2.value']}</strong><span>{t['hero.stat2.label']}</span></div>
+        <div class="hero__stat"><strong>{t['hero.stat3.value']}</strong><span>{t['hero.stat3.label']}</span></div>
       </div>
     </div>
-    <div class="hero__image">
+    <div class="hero__image" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
       <img src="/bannerbg.png" alt="Banner Gauchino" />
     </div>
   </div>

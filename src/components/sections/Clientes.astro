@@ -1,34 +1,38 @@
-﻿<div class="clientes-container">
+﻿---
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations(Astro.currentLocale ?? 'es');
+---
+<div class="clientes-container" id="clientes">
   <!-- Parte Superior -->
   <div class="parte-superior">
-    <div class="bloque-texto">
-      <h2 class="clientes-title">Donde la Tecnología <span class="highlight">se vuelve simple</span></h2>
-      <p class="bloque-parrafo">En Gauchino desarrollamos software con foco en el usuario. Creemos que la tecnología funciona mejor cuando es simple, útil y se disfruta usar.</p>
+    <div class="bloque-texto" data-aos="fade-right" data-aos-duration="700">
+      <h2 class="clientes-title">{t['cli.title1']} <span class="highlight">{t['cli.title2']}</span></h2>
+      <p class="bloque-parrafo">{t['cli.desc']}</p>
     </div>
-    <div class="cuadro-grande">
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">Cercanía</span></div>
+    <div class="cuadro-grande" data-aos="fade-left" data-aos-duration="700" data-aos-delay="150">
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat.label']}</span></div>
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat.label']}</span></div>
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat.label']}</span></div>
+      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat.label']}</span></div>
     </div>
   </div>
   
   <!-- Parte Inferior -->
-  <h3 class="inferior-titulo">¿Qué dicen quienes trabajaron con Nosotros?</h3>
+  <h3 class="inferior-titulo" data-aos="fade-up">{t['cli.reviews.heading']}</h3>
   <div class="parte-inferior">
-    <div class="resena-1">
-      <p class="resena-autor">Kevin &mdash; Stockeate</p>
+    <div class="resena-1" data-aos="fade-up" data-aos-delay="100">
+      <p class="resena-autor">{t['cli.review1.author']}</p>
       <span class="resena-sep"></span>
-      <p class="resena-texto">&ldquo;Gauchino nos creó un sistema que se adaptó exactamente a cómo trabajamos. Simple, rápido y sin vueltas. Nos cambió el día a día.&rdquo;</p>
+      <p class="resena-texto">{t['cli.review1.text']}</p>
     </div>
-    <div class="resena-2">
-      <p class="resena-autor">Matías &mdash; Presupuestate</p>
+    <div class="resena-2" data-aos="fade-up" data-aos-delay="200">
+      <p class="resena-autor">{t['cli.review2.author']}</p>
       <span class="resena-sep"></span>
-      <p class="resena-texto">&ldquo;Desde que empezamos con Gauchino, el equipo estuvo siempre cerca. Entendieron lo que necesitábamos y lo hicieron realidad.&rdquo;</p>
+      <p class="resena-texto">{t['cli.review2.text']}</p>
     </div>
-    <div class="cta">
-      <p class="cta-titulo">¿Querés ser el próximo caso de éxito?</p>
-      <a href="#contacto" class="cta-btn">Contáctanos</a>
+    <div class="cta" data-aos="fade-up" data-aos-delay="300">
+      <p class="cta-titulo">{t['cli.cta.title']}</p>
+      <a href="#contacto" class="cta-btn">{t['cli.cta.btn']}</a>
     </div>
   </div>
 </div>
@@ -257,5 +261,21 @@
     .cta {
       padding: 1rem;
     }
+  }
+
+  @media (min-width: 1440px) {
+    .clientes-container {
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    .clientes-title { font-size: 2.8rem; }
+    .bloque-parrafo { font-size: 1.1rem; }
+    .celda-num      { font-size: 3.2rem; }
+    .celda-label    { font-size: 1.75rem; }
+    .inferior-titulo { font-size: 1.4rem; }
+    .resena-autor   { font-size: 1.1rem; }
+    .resena-texto   { font-size: 1.05rem; }
+    .cta-titulo     { font-size: 1.3rem; }
   }
 </style>

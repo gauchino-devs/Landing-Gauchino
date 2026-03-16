@@ -1,33 +1,67 @@
 ﻿---
-// Navbar component
+import { useTranslations } from '../i18n/utils';
+const lang = Astro.currentLocale ?? 'es';
+const t = useTranslations(lang);
+
+// Prefijo de ruta segΓΊn el idioma actual
+const prefix = lang === 'en' ? '/en' : lang === 'pt' ? '/pt' : '';
+
+// URLs de cada sección
+const href = {
+  home:       prefix + '/',
+  servicios:  prefix + '/#servicios',
+  soluciones: prefix + '/#soluciones',
+  clientes:   prefix + '/#clientes',
+  contacto:   prefix + '/#contacto',
+  cotizar:    prefix + '/cotizar',
+};
+
+// URLs de cambio de idioma (misma página, distinto locale)
+const pathWithoutLocale = Astro.url.pathname
+  .replace(/^\/en(\/|$)/, '/')
+  .replace(/^\/pt(\/|$)/, '/');
+
+const localeUrls = {
+  es: pathWithoutLocale,
+  en: '/en' + (pathWithoutLocale === '/' ? '/' : pathWithoutLocale),
+  pt: '/pt' + (pathWithoutLocale === '/' ? '/' : pathWithoutLocale),
+};
+
+const langLabel = lang.toUpperCase();
 ---
 <header class="navbar">
   <div class="navbar__container">
-    <a href="/" class="navbar__logo">
+    <a href={href.home} class="navbar__logo">
       <img class="navbar__logo-icon" src="/Logotipo_principal.svg" alt="Gauchino Logo">
     </a>
     <nav class="navbar__nav">
-      <a href="/#servicios">Servicios</a>
-      <a href="/#soluciones">Soluciones</a>
-      <a href="/#clientes">Clientes</a>
-      <a href="/#contacto">Contacto</a>
+      <a href={href.servicios}>{t['nav.servicios']}</a>
+      <a href={href.soluciones}>{t['nav.soluciones']}</a>
+      <a href={href.clientes}>{t['nav.clientes']}</a>
+      <a href={href.contacto}>{t['nav.contacto']}</a>
     </nav>
     <div class="navbar__actions">
       <div class="lang-selector">
         <button class="lang-selector__btn" aria-haspopup="listbox" aria-expanded="false">
           <span class="lang-selector__icon">&#127760;</span>
-          <span class="lang-selector__label">ES</span>
+          <span class="lang-selector__label">{langLabel}</span>
           <svg class="lang-selector__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
         <ul class="lang-selector__dropdown" role="listbox">
-          <li class="lang-selector__option lang-selector__option--active" data-lang="ES">&#127466;&#127480; Español</li>
-          <li class="lang-selector__option" data-lang="EN">&#127482;&#127480; English</li>
-          <li class="lang-selector__option" data-lang="PT">&#127463;&#127479; Português</li>
+          <li class={`lang-selector__option${lang === 'es' ? ' lang-selector__option--active' : ''}`}>
+            <a href={localeUrls.es}>&#127466;&#127480; Espa&#241;ol</a>
+          </li>
+          <li class={`lang-selector__option${lang === 'en' ? ' lang-selector__option--active' : ''}`}>
+            <a href={localeUrls.en}>&#127482;&#127480; English</a>
+          </li>
+          <li class={`lang-selector__option${lang === 'pt' ? ' lang-selector__option--active' : ''}`}>
+            <a href={localeUrls.pt}>&#127463;&#127479; Portugu&#234;s</a>
+          </li>
         </ul>
       </div>
-      <a href="/cotizar" class="navbar__cta">Cotizar</a>
+      <a href={href.cotizar} class="navbar__cta">{t['nav.cotizar']}</a>
     </div>
 
     <!-- Hamburger (mobile only) -->
@@ -43,12 +77,12 @@
   <!-- Mobile menu -->
   <div class="mobile-menu" id="mobile-menu">
     <nav class="mobile-menu__nav">
-      <a href="/#servicios">Servicios</a>
-      <a href="/#soluciones">Soluciones</a>
-      <a href="/#clientes">Clientes</a>
-      <a href="/#contacto">Contacto</a>
+      <a href={href.servicios}>{t['nav.servicios']}</a>
+      <a href={href.soluciones}>{t['nav.soluciones']}</a>
+      <a href={href.clientes}>{t['nav.clientes']}</a>
+      <a href={href.contacto}>{t['nav.contacto']}</a>
     </nav>
-    <a href="/cotizar" class="navbar__cta mobile-menu__cta">Cotizar</a>
+    <a href={href.cotizar} class="navbar__cta mobile-menu__cta">{t['nav.cotizar']}</a>
   </div>
 </header>
 
@@ -266,11 +300,19 @@
   }
 
   .lang-selector__option {
-    padding: 0.55rem 1rem;
+    padding: 0;
     font-size: 0.875rem;
     color: rgba(255,255,255,0.75);
     cursor: pointer;
     transition: background 0.15s, color 0.15s;
+  }
+
+  .lang-selector__option a {
+    display: block;
+    padding: 0.55rem 1rem;
+    color: inherit;
+    text-decoration: none;
+    width: 100%;
   }
 
   .lang-selector__option:hover {
@@ -288,8 +330,6 @@
 <script>
   const selector = document.querySelector('.lang-selector')!;
   const btn      = selector.querySelector('.lang-selector__btn')!;
-  const label    = selector.querySelector('.lang-selector__label')!;
-  const options  = selector.querySelectorAll('.lang-selector__option');
 
   // Hamburger toggle
   const hamburgerCheck = document.getElementById('hamburger-check') as HTMLInputElement;
@@ -311,16 +351,6 @@
     e.stopPropagation();
     const open = selector.classList.toggle('lang-selector--open');
     btn.setAttribute('aria-expanded', String(open));
-  });
-
-  options.forEach(opt => {
-    opt.addEventListener('click', () => {
-      label.textContent = (opt as HTMLElement).dataset.lang ?? 'ES';
-      options.forEach(o => o.classList.remove('lang-selector__option--active'));
-      opt.classList.add('lang-selector__option--active');
-      selector.classList.remove('lang-selector--open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
   });
 
   document.addEventListener('click', () => {

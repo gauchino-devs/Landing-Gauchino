@@ -1,0 +1,81 @@
+export default {
+  // Navbar
+  'nav.servicios': 'Servicios',
+  'nav.soluciones': 'Soluciones',
+  'nav.clientes': 'Clientes',
+  'nav.contacto': 'Contacto',
+  'nav.cotizar': 'Cotizar',
+
+  // Hero
+  'hero.title1': 'Creando las mejores',
+  'hero.title2': 'Soluciones IT.',
+  'hero.subtitle': 'Rapido, confiable y cercano.',
+  'hero.cta1': 'Cotizar ahora',
+  'hero.cta2': 'Contacto',
+  'hero.stat1.value': '100%',
+  'hero.stat1.label': 'Satisfacción',
+  'hero.stat2.value': '100%',
+  'hero.stat2.label': 'Soporte brindado',
+  'hero.stat3.value': '5★',
+  'hero.stat3.label': 'Calificacion promedio',
+
+  // Servicios
+  'serv.heading': 'Lo que hacemos',
+  'serv.dev.title': 'Desarrollo de Software personalizado',
+  'serv.dev.desc': 'Arquitecturas robustas y escalables, construidas a medida para resolver los desafios mas complejos de tu negocio. Desde MVPs hasta plataformas enterprise.',
+  'serv.erp.title': 'ERP/CRM',
+  'serv.erp.desc': 'Sistemas de gestión personalizados que se adaptan a tu operación.',
+  'serv.web.title': 'Diseño Web',
+  'serv.web.desc': 'Interfaces que cautivan, convierten y generan lealtad de marca.',
+  'serv.int.title': 'Integraciones',
+  'serv.int.desc': 'Conectamos tus sistemas y APIs para que todo funcione como uno.',
+  'serv.mob.title': 'Mobile',
+  'serv.mob.desc': 'Apps nativas e híbridas de alto rendimiento para iOS y Android.',
+  'serv.ai.title': 'IA',
+  'serv.ai.desc': 'Modelos inteligentes que automatizan y generan valor estratégico.',
+  'serv.aut.title': 'Automatizaciones',
+  'serv.aut.desc': 'Flujos de trabajo inteligentes que eliminan tareas repetitivas.',
+  'serv.sup.title': 'Soporte',
+  'serv.sup.desc': 'Acompañamiento técnico continuo para que tu producto nunca se detenga.',
+
+  // CTA
+  'cta.title': '¿Listo para transformar tu negocio con software a medida?',
+  'cta.desc': 'Contanos tu idea y te ayudamos a convertirla en una solución real. Sin vueltas, sin tecnicismos.',
+  'cta.btn': 'Cotizá tu proyecto',
+
+  // Soluciones
+  'sol.title1': 'El software correcto',
+  'sol.title2': 'cambia negocios',
+  'sol.subtitle': 'En Gauchino desarrollamos sistemas a medida que automatizan procesos, optimizan tiempos y centralizan la gestión del negocio.',
+  'sol.desc1': 'Organizá tu negocio de forma simple y clara. Nuestro sistema permite registrar movimientos, mantener el stock actualizado y tener control total sobre los productos para evitar errores, faltantes y desorden.',
+  'sol.desc2': 'Simplicá el proceso de ventas y digitalizá la información de tus clientes. Automatizamos tareas repetitivas y clasificamos datos para que puedas gestionar oportunidades, hacer seguimiento y vender de manera más eficiente.',
+  'sol.desc3': 'Centralizá la información clave y proyectá tus gastos. Presupuestá tu desarrollo inmobiliario, administrá tu base de clientes y organizá pagos o comisiones desde un mismo sistema pensado para simplificar la gestión diaria.',
+  'sol.prev': 'Anterior',
+  'sol.next': 'Siguiente',
+
+  // Clientes
+  'cli.title1': 'Donde la Tecnología',
+  'cli.title2': 'se vuelve simple',
+  'cli.desc': 'En Gauchino desarrollamos software con foco en el usuario. Creemos que la tecnología funciona mejor cuando es simple, útil y se disfruta usar.',
+  'cli.stat.label': 'Cercanía',
+  'cli.reviews.heading': '¿Qué dicen quienes trabajaron con Nosotros?',
+  'cli.review1.author': 'Kevin — Futuro Materiales',
+  'cli.review1.text': '"Gauchino nos creó un sistema que se adaptó exactamente a cómo trabajamos. Simple, rápido y sin vueltas. Nos cambió el día a día."',
+  'cli.review2.author': 'Matías — Principado Ciudad Náutica',
+  'cli.review2.text': '"Desde que empezamos con Gauchino, el equipo estuvo siempre cerca. Entendieron lo que necesitábamos y lo hicieron realidad."',
+  'cli.cta.title': '¿Querés ser el próximo caso de éxito?',
+  'cli.cta.btn': 'Contáctanos',
+
+  // Contacto
+  'con.title': 'Comencemos a construir algo juntos',
+  'con.subtitle': 'Contanos tu idea, problema o tu proyecto.',
+  'con.subtitle2': 'Respondemos en menos de 24hs.',
+  'con.name': 'Nombre',
+  'con.email': 'Email',
+  'con.message': '¿En qué podemos ayudarte?',
+  'con.send': 'Enviar',
+  'con.resp.label': 'Respuesta',
+  'con.resp.value': 'Mismo Día — Menos de 24hs',
+  'con.cta.label': '¿Buscás rapidez en la solución?',
+  'con.cta.btn': 'Cotizar',
+} as const;
