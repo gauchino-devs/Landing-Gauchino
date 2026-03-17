@@ -12,12 +12,15 @@ const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.current
   <!-- Parte Inferior -->
   <div class="parte-inferior">
     <!-- Izquierda - Formulario -->
-    <div class="formulario" data-aos="fade-right" data-aos-delay="150">
-      <input type="text" placeholder={t['con.name']} />
-      <input type="email" placeholder={t['con.email']} />
-      <textarea placeholder={t['con.message']}></textarea>
-      <button>{t['con.send']}</button>
-    </div>
+    <form class="formulario" id="formulario-contacto" data-aos="fade-right" data-aos-delay="150">
+      <input type="text" name="name" placeholder={t['con.name']} />
+      <input type="email" name="email" placeholder={t['con.email']} />
+      <textarea name="message" placeholder={t['con.message']}></textarea>
+      <button type="submit">{t['con.send']}</button>
+      <p id="mensaje-exito-contacto">
+        ¡Mensaje enviado!
+      </p>
+    </form>
     
     <!-- Derecha - Tres Cuadros -->
     <div class="cuadros-derecha" data-aos="fade-left" data-aos-delay="200">
@@ -164,6 +167,13 @@ const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.current
     background-color: var(--color-secondary-hover);
   }
 
+  #mensaje-exito-contacto {
+  display: none;
+  color: white;
+  margin-top: 0.5rem;
+  align-self: flex-start;
+}
+
   /* Responsive */
   @media (max-width: 768px) {
     .contacto-container {
@@ -230,3 +240,31 @@ const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.current
     }
   }
 </style>
+
+<script is:inline defer>
+  const formContacto = document.getElementById("formulario-contacto");
+  const mensajeContacto = document.getElementById("mensaje-exito-contacto");
+
+  formContacto.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(formContacto);
+
+    const response = await fetch("https://formspree.io/f/xnjgodwe", {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      mensajeContacto.style.display = "block";
+      formContacto.reset();
+
+      setTimeout(() => {
+        mensajeContacto.style.display = "none";
+      }, 3000);
+    }
+  });
+</script>
