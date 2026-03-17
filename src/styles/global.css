@@ -46,6 +46,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
+  overflow-x: hidden;
 }
 
 @media (min-width: 1440px) {
@@ -56,6 +57,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   font-family: var(--font-sans);
   color: var(--color-text);
   background-color: var(--color-bg);
