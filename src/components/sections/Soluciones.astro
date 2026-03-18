@@ -60,7 +60,7 @@ const textos = [t['sol.desc1'], t['sol.desc2'], t['sol.desc3']];
   }
 
   .cuadro-principal {
-    background-color: var(--color-primary);
+    background: linear-gradient(to bottom, var(--color-primary-light) 0%, var(--color-primary) 100%);
     border-radius: var(--radius);
     width: 100%;
     height: 90vh;
@@ -90,7 +90,7 @@ const textos = [t['sol.desc1'], t['sol.desc2'], t['sol.desc3']];
   }
 
   .soluciones-highlight {
-    color: var(--color-secondary);
+    color: var(--color-secondary-light);
   }
 
   .soluciones-subtitulo {
@@ -197,6 +197,7 @@ const textos = [t['sol.desc1'], t['sol.desc2'], t['sol.desc3']];
       grid-template-columns: 1fr;
       grid-template-rows: auto auto;
       height: auto;
+      background: linear-gradient(to bottom, var(--color-primary-light) 100%, var(--color-primary) 100%);
     }
 
     .lado-izquierdo {

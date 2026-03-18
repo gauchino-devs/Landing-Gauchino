@@ -3,6 +3,7 @@ import { useTranslations } from '../../i18n/utils';
 const t = useTranslations(Astro.currentLocale ?? 'es');
 const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.currentLocale === 'pt' ? '/pt/cotizar' : '/cotizar';
 const serviciosHref = Astro.currentLocale === 'en' ? '/en/#servicios' : Astro.currentLocale === 'pt' ? '/pt/#servicios' : '/#servicios';
+const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.currentLocale === 'pt' ? '/pt/#contacto' : '/#contacto';
 ---
 <section id="hero" class="hero">
   <div class="hero__container">
@@ -16,7 +17,7 @@ const serviciosHref = Astro.currentLocale === 'en' ? '/en/#servicios' : Astro.cu
       </p>
       <div class="hero__actions" data-aos="fade-right" data-aos-delay="250">
         <a href={cotizarHref} class="btn btn--primary">{t['hero.cta1']}</a>
-        <a href={serviciosHref} class="btn btn--outline">{t['hero.cta2']}</a>
+        <a href={contactoHref} class="btn btn--outline">{t['hero.cta2']}</a>
       </div>
       <div class="hero__stats" data-aos="fade-up" data-aos-delay="350">
         <div class="hero__stat"><strong>{t['hero.stat1.value']}</strong><span>{t['hero.stat1.label']}</span></div>
@@ -40,13 +41,13 @@ const serviciosHref = Astro.currentLocale === 'en' ? '/en/#servicios' : Astro.cu
     grid-template-columns: 1fr 1fr;
   }
 
-  /* Columna izquierda: contenido centrado verticalmente */
+  /* Columna izquierda: contenido hacia abajo */
   .hero__content {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 1.5rem;
-    padding: 8rem 2rem 4rem 1rem;
+    padding: 8rem 2rem 8rem 1rem;
     padding-left: max(2rem, calc((90vw - var(--max-width)) / 2));
   }
 
@@ -76,9 +77,10 @@ const serviciosHref = Astro.currentLocale === 'en' ? '/en/#servicios' : Astro.cu
     .hero {
       grid-template-columns: 1fr;
       grid-template-rows: auto;
+      min-height: auto;
     }
     .hero__content {
-      padding: 7rem 1.5rem 2rem;
+      padding: 7rem 1.5rem 3rem;
     }
     .hero__image {
       display: none;

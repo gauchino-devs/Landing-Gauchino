@@ -9,42 +9,66 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
   <!-- Lado Izquierdo -->
   <div class="left-side">
     <div class="box-grande" data-aos="fade-right" data-aos-delay="100">
+      <div class="icon-wrapper">
+        <img src="/codigo.png" alt="Desarrollo" class="service-icon" />
+      </div>
       <h3 class="box-grande-titulo">{t['serv.dev.title']}</h3>
       <p class="box-grande-desc">{t['serv.dev.desc']}</p>
     </div>
     <div class="boxes-chicos">
       <div class="box-chico" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-wrapper">
+          <img src="/erp.png" alt="ERP" class="service-icon" />
+        </div>
         <h3 class="box-chico-titulo">{t['serv.erp.title']}</h3>
         <p class="box-chico-desc">{t['serv.erp.desc']}</p>
       </div>
       <div class="box-chico" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon-wrapper">
+          <img src="/sitio-web.png" alt="Sitio Web" class="service-icon" />
+        </div>
         <h3 class="box-chico-titulo">{t['serv.web.title']}</h3>
         <p class="box-chico-desc">{t['serv.web.desc']}</p>
       </div>
     </div>
   </div>
-  
+
   <!-- Lado Derecho -->
   <div class="right-side">
     <div class="boxes-arriba">
       <div class="box-derecho" data-aos="fade-up" data-aos-delay="150">
+        <div class="icon-wrapper">
+          <img src="/integracion.png" alt="Integración" class="service-icon" />
+        </div>
         <h3 class="box-derecho-titulo">{t['serv.int.title']}</h3>
         <p class="box-derecho-desc">{t['serv.int.desc']}</p>
       </div>
       <div class="box-derecho" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-wrapper">
+          <img src="/mobile.png" alt="Mobile" class="service-icon" />
+        </div>
         <h3 class="box-derecho-titulo">{t['serv.mob.title']}</h3>
         <p class="box-derecho-desc">{t['serv.mob.desc']}</p>
       </div>
       <div class="box-derecho" data-aos="fade-up" data-aos-delay="250">
+        <div class="icon-wrapper">
+          <img src="/bot.png" alt="IA" class="service-icon" />
+        </div>
         <h3 class="box-derecho-titulo">{t['serv.ai.title']}</h3>
         <p class="box-derecho-desc">{t['serv.ai.desc']}</p>
       </div>
       <div class="box-derecho" data-aos="fade-up" data-aos-delay="300">
+        <div class="icon-wrapper">
+          <img src="/automatizacion.png" alt="Automatización" class="service-icon" />
+        </div>
         <h3 class="box-derecho-titulo">{t['serv.aut.title']}</h3>
         <p class="box-derecho-desc">{t['serv.aut.desc']}</p>
       </div>
     </div>
     <div class="box-abajo" data-aos="fade-left" data-aos-delay="350">
+      <div class="icon-wrapper">
+        <img src="/soporte.png" alt="Soporte" class="service-icon" />
+      </div>
       <h3 class="box-abajo-titulo">{t['serv.sup.title']}</h3>
       <p class="box-abajo-desc">{t['serv.sup.desc']}</p>
     </div>
@@ -68,20 +92,39 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
   }
 
   .left-side {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
     gap: 1rem;
+    height: 100%;
+  }
+
+  .icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--color-secondary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .service-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
   }
 
   .box-grande {
-    flex: 3;
     border: 2px solid #333;
     background-color: var(--color-primary);
     padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 4rem;
+    gap: 1.5rem;
     border-radius: var(--radius);
     position: relative;
     overflow: hidden;
@@ -162,13 +205,13 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
   }
 
   .right-side {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 3fr 1fr;
     gap: 1rem;
+    height: 100%;
   }
 
   .boxes-arriba {
-    flex: 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -216,7 +259,6 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
   }
 
   .box-abajo {
-    flex: 1;
     border: 2px solid #333;
     background-color: var(--color-primary);
     border-radius: var(--radius);
