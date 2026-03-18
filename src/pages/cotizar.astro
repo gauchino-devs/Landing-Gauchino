@@ -10,11 +10,11 @@ import Layout from '../layouts/Layout.astro';
         <h1>Cotizar proyecto</h1>
         <p>Completa el formulario y te enviamos una propuesta detallada en menos de 48hs habiles.</p>
       </div>
-      <form class="cotizar__form" method="POST" action="#">
+      <form class="cotizar__form" id="formulario">
         <div class="form-row">
           <div class="form-group">
             <label for="nombre">Nombre completo *</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Juan Perez" required />
+            <input type="text" id="nombre" name="name" placeholder="Juan Perez" required />
           </div>
                   <div class="form-group">
           <label for="servicio">Servicio de interes *</label>
@@ -40,7 +40,7 @@ import Layout from '../layouts/Layout.astro';
           
         <div class="form-group">
           <label for="mensaje">Contános tu idea *</label>
-          <textarea id="mensaje" name="mensaje" rows="5" placeholder="Contanos brevemente que necesitas, en que etapa estas y cuando queres empezar..." required></textarea>
+          <textarea id="mensaje" name="message" rows="5" placeholder="Contanos brevemente que necesitas, en que etapa estas y cuando queres empezar..." required></textarea>
         </div>
         </div>
         <div class="form-row">
@@ -54,6 +54,9 @@ import Layout from '../layouts/Layout.astro';
           </div>
         </div>
         <button type="submit" class="btn-submit">Enviar solicitud de cotizacion &#8594;</button>
+        <p id="mensaje-exito">
+          ¡Solicitud enviada con éxito!
+        </p>
       </form>
     </div>
   </section>
@@ -119,10 +122,10 @@ import Layout from '../layouts/Layout.astro';
   }
   .form-group input:focus,
   .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--color-accent); }
+  .form-group textarea:focus { border-color: var(--color-secondary); }
   .form-group textarea { resize: vertical; }
   .btn-submit {
-    background-color: var(--color-accent);
+    background-color: var(--color-secondary);
     color: #fff;
     border: none;
     padding: 1rem 2rem;
@@ -134,5 +137,41 @@ import Layout from '../layouts/Layout.astro';
     transition: background-color 0.2s, transform 0.2s;
     align-self: flex-start;
   }
-  .btn-submit:hover { background-color: var(--color-accent-hover); transform: translateY(-1px); }
+  .btn-submit:hover { background-color: var(--color-secondary-hover); transform: translateY(-1px); }
+  
+  #mensaje-exito {
+  display: none;
+  color: green;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: left;
+}
 </style>
+
+<script is:inline defer>
+  const form = document.getElementById("formulario");
+  const mensaje = document.getElementById("mensaje-exito");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = new FormData(form);
+
+    const response = await fetch("https://formspree.io/f/mzdjkrwg", {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      mensaje.style.display = "block";
+      form.reset();
+
+      setTimeout(() => {
+        mensaje.style.display = "none";
+    }, 3000)
+    }
+  });
+</script>
