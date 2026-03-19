@@ -30,4 +30,4 @@ COPY --from=build /app/dist ./dist
 # Exponer puerto 80
 EXPOSE 80
 # Comando para ejecutar serve
-CMD ["serve", "-s", "dist", "-l", "80"]
+CMD ["serve", "dist", "-l", "80"]
