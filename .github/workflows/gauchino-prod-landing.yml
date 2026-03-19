@@ -1,0 +1,117 @@
+### github action workflow to build and deploy a docker image for gauchino.
+name: run-gauchino-prod-workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build a docker image for gauchino on prod
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: checkout
+      uses: actions/checkout@v4
+      
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: arn:aws:iam::231321007731:role/viccat-gauchino-oidc-iam-role
+        role-session-name: github-oidc-session
+        aws-region: us-east-1 
+        
+    - name: login to aws ecr
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+      
+    - name: add github short commit id as tag
+      run: echo "SHORT_SHA=`echo ${GITHUB_SHA} | cut -c1-7`" >> $GITHUB_ENV
+                 
+    - name: build, tag, and push the docker image to aws ecr
+      id: build-gauchino-docker-image
+      env:
+        ECR_REGISTRY: 231321007731.dkr.ecr.us-east-1.amazonaws.com 
+        ECR_REPOSITORY: gauchino
+        ENV: prod 
+        COMMIT_ID: prod-${{ env.SHORT_SHA }}
+      run: |
+        docker build \
+          -t $ECR_REGISTRY/$ECR_REPOSITORY:$ENV .
+        docker tag $ECR_REGISTRY/$ECR_REPOSITORY:$ENV $ECR_REGISTRY/$ECR_REPOSITORY:$COMMIT_ID
+        echo "pushing image to aws ecr..."
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$ENV
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$COMMIT_ID
+        echo "name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$ENV" >> $GITHUB_OUTPUT
+
+  deploy:
+    name: deploy a docker image for gauchino on prod
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    if: needs.build.result == 'success'
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+    - name: create keys directory
+      shell: bash
+      run: |
+        sudo mkdir /opt/keys
+        
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::231321007731:role/viccat-gauchino-oidc-iam-role
+        role-session-name: github-oidc-session
+        aws-region: us-east-1
+
+    - name: retrieve aws secret
+      shell: bash
+      run: |
+        aws secretsmanager get-secret-value --secret-id lpdd-dev-key-authorized-keys --region us-east-1 --query 'SecretString' --output text > /opt/keys/lpdd-dev-key-authorized-keys.pem && sudo chmod 0400 /opt/keys/*.pem 
+
+    - name: Deploy App on EC2
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.AWS_EC2_HOST }}
+        username: ${{ secrets.AWS_EC2_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          # Login to ECR using AWS CLI from GitHub Actions
+          export AWS_DEFAULT_REGION=us-east-1
+          
+          # Get ECR login token and login to Docker
+          aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 231321007731.dkr.ecr.us-east-1.amazonaws.com
+          
+          # Pull latest images from ECR
+          sudo docker pull 231321007731.dkr.ecr.us-east-1.amazonaws.com/gauchino:prod
+          sudo docker pull 231321007731.dkr.ecr.us-east-1.amazonaws.com/stockeate-devops-presupuestate:dev
+          
+          # Create directory for docker-compose
+          sudo mkdir -p /opt/devops/presupuestate
+          
+          # Extract docker-compose.yml from the image
+          sudo docker create --name temp-container 231321007731.dkr.ecr.us-east-1.amazonaws.com/stockeate-devops-presupuestate:dev
+          sudo docker cp temp-container:/opt/presupuestate/docker-compose-presupuestate.yml /opt/devops/presupuestate/docker-compose-presupuestate.yml
+          sudo docker rm temp-container
+          
+          # Stop and remove existing containers
+          cd /opt/devops/presupuestate
+          sudo docker-compose -f docker-compose-presupuestate.yml down || true
+          
+          # Start services with docker-compose
+          sudo docker-compose -f docker-compose-presupuestate.yml up -d
+          
+          # Verify status
+          sudo docker-compose -f docker-compose-presupuestate.yml ps
+          
+          # Test connectivity
+          sleep 10
+          sudo docker exec gauchino-landing curl -f http://localhost:80 || echo "Gauchino health check failed"
+          
+          # Clean up unused images
+          sudo docker image prune -f
