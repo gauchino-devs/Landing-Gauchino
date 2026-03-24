@@ -1,187 +1,231 @@
-﻿---
+---
 // Footer
 ---
 <footer class="footer">
-  <div class="footer__container">
+  <div class="footer__top">
     <div class="footer__brand">
-      <span class="footer__logo">Gauchino</span>
-      <p>Soluciones tecnologicas para tu negocio.</p>
+      <span class="footer__logo">GAUCHINO</span>
+      <p class="footer__tagline">Soluciones tecnológicas para tu negocio.</p>
     </div>
+    <div class="footer__contact-block">
+      <div class="footer__contact-info">
+        <span class="footer__contact-label">Contact us:</span>
+        <a href="mailto:gauchino@gauchino.com" class="footer__contact-email">gauchino@gauchino.com</a>
+      </div>
+      <a href="/cotizar" class="footer__cta">Cotizar</a>
+    </div>
+  </div>
+
+  <div class="footer__divider"></div>
+
+  <div class="footer__bottom">
     <nav class="footer__nav">
       <a href="/#servicios">Servicios</a>
       <a href="/#soluciones">Soluciones</a>
       <a href="/#clientes">Clientes</a>
       <a href="/#contacto">Contacto</a>
-      <a href="/cotizar">Cotizar</a>
     </nav>
-    <ul class="wrapper">
-      <li class="icon linkedin">
-        <a href="https://www.linkedin.com/company/gauchino-software" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <span class="tooltip">LinkedIn</span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" viewBox="0 0 448 512">
-            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+
+    <ul class="footer__socials">
+      <li>
+        <a href="https://www.linkedin.com/company/gauchino-software" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 448 512">
+            <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/>
           </svg>
         </a>
       </li>
-      <li class="icon tiktok">
-        <a href="https://www.tiktok.com/@gauchino.software" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <span class="tooltip">TikTok</span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" viewBox="0 0 448 512">
-            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"></path>
+      <li>
+        <a href="https://www.instagram.com/gauchino.software" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
           </svg>
         </a>
       </li>
-      <li class="icon instagram">
-        <a href="https://www.instagram.com/gauchino.software" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <span class="tooltip">Instagram</span>
-          <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+      <li>
+        <a href="https://www.tiktok.com/@gauchino.software" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 448 512">
+            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/>
+          </svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.youtube.com/@gauchino" target="_blank" rel="noopener noreferrer" aria-label="YouTube" class="social-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 576 512">
+            <path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/>
           </svg>
         </a>
       </li>
     </ul>
-    <p class="footer__copy">© 2026 Gauchino. Todos los derechos reservados.</p>
+
+    <p class="footer__copy">© 2034 Gauchino. Todos los derechos reservados.</p>
   </div>
 </footer>
 
 <style>
   .footer {
     background-color: var(--color-primary);
-    color: rgba(255,255,255,0.75);
-    padding: 3rem 2rem 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
-  .footer__container {
+
+  .footer__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem 2rem;
     max-width: var(--max-width);
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    text-align: center;
+    gap: 2rem;
+    flex-wrap: wrap;
   }
+
   .footer__logo {
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-size: 1.4rem;
+    font-weight: 800;
     color: #fff;
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.04em;
+    font-family: var(--font-display);
   }
-  .footer__brand p { font-size: 0.875rem; }
+
+  .footer__tagline {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .footer__contact-block {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .footer__contact-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .footer__contact-email {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .footer__contact-email:hover {
+    color: var(--color-secondary-light);
+  }
+
+  .footer__cta {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background-color: var(--color-secondary);
+    color: #fff;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .footer__cta:hover {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-1px);
+  }
+
+  .footer__divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .footer__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
   .footer__nav {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    justify-content: center;
   }
+
   .footer__nav a {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
     transition: color 0.2s;
   }
-  .footer__nav a:hover { color: #fff; }
-  .footer__copy {
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.4);
-    border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 1rem;
-    width: 100%;
-    text-align: center;
+
+  .footer__nav a:hover {
+    color: rgba(255, 255, 255, 0.85);
   }
 
-  /* Social icons */
-  .wrapper {
-    display: inline-flex;
+  .footer__socials {
+    display: flex;
+    gap: 0.5rem;
     list-style: none;
-    height: 80px;
-    width: 100%;
-    padding-top: 10px;
-    justify-content: center;
+    align-items: center;
   }
 
-  .wrapper .icon {
-    position: relative;
-    background: #fff;
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
-    margin: 10px;
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    color: #555;
-    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.5);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
   }
 
-  .wrapper .tooltip {
-    position: absolute;
-    top: 0;
-    font-size: 14px;
-    background: #fff;
+  .social-icon:hover {
+    background: var(--color-secondary);
     color: #fff;
-    padding: 5px 8px;
-    border-radius: 5px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: translateY(-2px);
   }
 
-  .wrapper .tooltip::before {
-    position: absolute;
-    content: "";
-    height: 8px;
-    width: 8px;
-    background: #fff;
-    bottom: -3px;
-    left: 50%;
-    transform: translate(-50%) rotate(45deg);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  .footer__copy {
+    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.28);
+    white-space: nowrap;
   }
 
-  .wrapper .icon:hover .tooltip {
-    top: -45px;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .wrapper .icon:hover span,
-  .wrapper .icon:hover .tooltip {
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-  }
-
-  .wrapper .icon a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .wrapper .linkedin:hover,
-  .wrapper .linkedin:hover .tooltip,
-  .wrapper .linkedin:hover .tooltip::before {
-    background: #0a66c2;
-    color: #fff;
-  }
-
-  .wrapper .tiktok:hover,
-  .wrapper .tiktok:hover .tooltip,
-  .wrapper .tiktok:hover .tooltip::before {
-    background: #010101;
-    color: #fff;
-  }
-
-  .wrapper .instagram:hover,
-  .wrapper .instagram:hover .tooltip,
-  .wrapper .instagram:hover .tooltip::before {
-    background: #e4405f;
-    color: #fff;
+  @media (max-width: 768px) {
+    .footer__top {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 2rem 1.5rem;
+      gap: 1.5rem;
+    }
+    .footer__contact-block {
+      gap: 1.25rem;
+    }
+    .footer__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1.25rem 1.5rem;
+      gap: 1rem;
+    }
+    .footer__copy {
+      padding-top: 0.5rem;
+    }
   }
 </style>

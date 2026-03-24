@@ -2,16 +2,16 @@
 import Layout      from '../../layouts/Layout.astro';
 import Hero        from '../../components/sections/Hero.astro';
 import Servicios   from '../../components/sections/Servicios.astro';
-import Soluciones  from '../../components/sections/Soluciones.astro';
+import Marquee     from '../../components/sections/Marquee.astro';
 import Clientes    from '../../components/sections/Clientes.astro';
 import Contacto    from '../../components/sections/Contacto.astro';
-import CTA         from '../../components/sections/cta.astro';
 ---
-<Layout title="Gauchino - Soluções tecnológicas personalizadas">
-  <Hero />
-  <Servicios />
-  <CTA />
-  <Soluciones />
+<Layout title="Gauchino - Soluções tecnológicas personalizadas" hasHero={true}>
+  <div class="hero-services-unified">
+    <Hero />
+    <Servicios />
+  </div>
+  <Marquee />
   <Clientes />
   <Contacto />
 </Layout>

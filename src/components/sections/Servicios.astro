@@ -1,13 +1,12 @@
-﻿---
+---
 import { useTranslations } from '../../i18n/utils';
 const t = useTranslations(Astro.currentLocale ?? 'es');
 ---
-<section id="servicios">
-<h2 class="servicios-title" data-aos="fade-up">{t['serv.heading']}</h2>
-<div class="servicios-container">
+<section id="servicios" class="servicios-section">
+  <h2 class="servicios-title" data-aos="fade-up">{t['serv.heading']}</h2>
+  <div class="servicios-grid">
 
-  <!-- Lado Izquierdo -->
-  <div class="left-side">
+    <!-- Left: Big card -->
     <div class="box-grande" data-aos="fade-right" data-aos-delay="100">
       <div class="icon-wrapper">
         <img src="/codigo.png" alt="Desarrollo" class="service-icon" />
@@ -15,99 +14,90 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
       <h3 class="box-grande-titulo">{t['serv.dev.title']}</h3>
       <p class="box-grande-desc">{t['serv.dev.desc']}</p>
     </div>
-    <div class="boxes-chicos">
-      <div class="box-chico" data-aos="fade-up" data-aos-delay="200">
-        <div class="icon-wrapper">
-          <img src="/erp.png" alt="ERP" class="service-icon" />
-        </div>
-        <h3 class="box-chico-titulo">{t['serv.erp.title']}</h3>
-        <p class="box-chico-desc">{t['serv.erp.desc']}</p>
-      </div>
-      <div class="box-chico" data-aos="fade-up" data-aos-delay="300">
-        <div class="icon-wrapper">
-          <img src="/sitio-web.png" alt="Sitio Web" class="service-icon" />
-        </div>
-        <h3 class="box-chico-titulo">{t['serv.web.title']}</h3>
-        <p class="box-chico-desc">{t['serv.web.desc']}</p>
-      </div>
-    </div>
-  </div>
 
-  <!-- Lado Derecho -->
-  <div class="right-side">
-    <div class="boxes-arriba">
-      <div class="box-derecho" data-aos="fade-up" data-aos-delay="150">
+    <!-- Right: 3x2 grid of 6 cards -->
+    <div class="servicios-right">
+      <div class="box-small" data-aos="fade-up" data-aos-delay="150">
         <div class="icon-wrapper">
           <img src="/integracion.png" alt="Integración" class="service-icon" />
         </div>
-        <h3 class="box-derecho-titulo">{t['serv.int.title']}</h3>
-        <p class="box-derecho-desc">{t['serv.int.desc']}</p>
+        <h3 class="box-small-titulo">{t['serv.int.title']}</h3>
+        <p class="box-small-desc">{t['serv.int.desc']}</p>
       </div>
-      <div class="box-derecho" data-aos="fade-up" data-aos-delay="200">
+      <div class="box-small" data-aos="fade-up" data-aos-delay="200">
         <div class="icon-wrapper">
           <img src="/mobile.png" alt="Mobile" class="service-icon" />
         </div>
-        <h3 class="box-derecho-titulo">{t['serv.mob.title']}</h3>
-        <p class="box-derecho-desc">{t['serv.mob.desc']}</p>
+        <h3 class="box-small-titulo">{t['serv.mob.title']}</h3>
+        <p class="box-small-desc">{t['serv.mob.desc']}</p>
       </div>
-      <div class="box-derecho" data-aos="fade-up" data-aos-delay="250">
+      <div class="box-small" data-aos="fade-up" data-aos-delay="250">
         <div class="icon-wrapper">
-          <img src="/bot.png" alt="IA" class="service-icon" />
+          <img src="/bot.png" alt="Automatización" class="service-icon" />
         </div>
-        <h3 class="box-derecho-titulo">{t['serv.ai.title']}</h3>
-        <p class="box-derecho-desc">{t['serv.ai.desc']}</p>
+        <h3 class="box-small-titulo">{t['serv.aut.title']}</h3>
+        <p class="box-small-desc">{t['serv.aut.desc']}</p>
       </div>
-      <div class="box-derecho" data-aos="fade-up" data-aos-delay="300">
+      <div class="box-small" data-aos="fade-up" data-aos-delay="300">
         <div class="icon-wrapper">
-          <img src="/automatizacion.png" alt="Automatización" class="service-icon" />
+          <img src="/erp.png" alt="ERP" class="service-icon" />
         </div>
-        <h3 class="box-derecho-titulo">{t['serv.aut.title']}</h3>
-        <p class="box-derecho-desc">{t['serv.aut.desc']}</p>
+        <h3 class="box-small-titulo">{t['serv.erp.title']}</h3>
+        <p class="box-small-desc">{t['serv.erp.desc']}</p>
+      </div>
+      <div class="box-small" data-aos="fade-up" data-aos-delay="350">
+        <div class="icon-wrapper">
+          <img src="/sitio-web.png" alt="Diseño Web" class="service-icon" />
+        </div>
+        <h3 class="box-small-titulo">{t['serv.web.title']}</h3>
+        <p class="box-small-desc">{t['serv.web.desc']}</p>
+      </div>
+      <div class="box-small" data-aos="fade-up" data-aos-delay="400">
+        <div class="icon-wrapper">
+          <img src="/soporte.png" alt="Soporte" class="service-icon" />
+        </div>
+        <h3 class="box-small-titulo">{t['serv.sup.title']}</h3>
+        <p class="box-small-desc">{t['serv.sup.desc']}</p>
       </div>
     </div>
-    <div class="box-abajo" data-aos="fade-left" data-aos-delay="350">
-      <div class="icon-wrapper">
-        <img src="/soporte.png" alt="Soporte" class="service-icon" />
-      </div>
-      <h3 class="box-abajo-titulo">{t['serv.sup.title']}</h3>
-      <p class="box-abajo-desc">{t['serv.sup.desc']}</p>
-    </div>
+
   </div>
-</div>
 </section>
 
 <style>
-    .servicios-title{
-        display: flex;
-        color: var(--color-primary);
-        justify-self: center;
-        font-size: 2.2rem;
-    }
-  .servicios-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    height: 100vh;
-    padding: 1rem;
+  .servicios-section {
+    padding: 1.5rem 2rem 4rem;
+    padding-left: max(2rem, calc((100vw - var(--max-width)) / 2));
+    padding-right: max(2rem, calc((100vw - var(--max-width)) / 2));
+    background: transparent;
   }
 
-  .left-side {
+  .servicios-title {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .servicios-grid {
     display: grid;
-    grid-template-rows: 3fr 1fr;
+    grid-template-columns: 5fr 7fr;
     gap: 1rem;
-    height: 100%;
+    min-height: 72vh;
   }
 
   .icon-wrapper {
     width: 3rem;
     height: 3rem;
     background-color: var(--color-secondary);
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.55rem;
     flex-shrink: 0;
+    box-shadow: 0 0 14px rgba(70, 1, 250, 0.5);
   }
 
   .service-icon {
@@ -117,10 +107,11 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
     filter: brightness(0) invert(1);
   }
 
+  /* Big card */
   .box-grande {
-    border: 2px solid #333;
-    background-color: var(--color-primary);
-    padding: 2rem;
+    border: 1.5px solid rgba(70, 1, 250, 0.45);
+    background: linear-gradient(145deg, var(--color-primary) 0%, #221447 100%);
+    padding: 2.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,56 +119,75 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
     border-radius: var(--radius);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 40px rgba(70, 1, 250, 0.15), inset 0 0 40px rgba(70, 1, 250, 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    height: 100%;
+  }
+
+  .box-grande:hover {
+    box-shadow: 0 0 60px rgba(70, 1, 250, 0.28), inset 0 0 40px rgba(70, 1, 250, 0.1);
+    transform: translateY(-2px);
   }
 
   .box-grande::after {
     content: '';
     position: absolute;
-    top: -3rem;
-    right: -3rem;
-    width: 12rem;
-    height: 12rem;
+    top: -4rem;
+    right: -4rem;
+    width: 16rem;
+    height: 16rem;
     border-radius: 50%;
     background: var(--color-secondary);
-    filter: blur(60px);
-    opacity: 0.45;
+    filter: blur(70px);
+    opacity: 0.35;
     pointer-events: none;
   }
 
   .box-grande-titulo {
-    color: var(--color-white);
-    font-size: 1.8rem;
+    color: #fff;
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
     line-height: 1.2;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
   }
 
   .box-grande-desc {
-    color: var(--color-white);
-    font-size: 1rem;
-    line-height: 1.6;
-    opacity: 0.85;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
   }
 
-  .boxes-chicos {
-    flex: 1;
+  /* Right grid */
+  .servicios-right {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .box-chico {
-    border: 2px solid #333;
-    background-color: var(--color-primary);
+  .box-small {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: var(--color-primary-light);
     border-radius: var(--radius);
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
     position: relative;
     overflow: hidden;
+    transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .box-chico::after {
+  .box-small:hover {
+    border-color: rgba(70, 1, 250, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25), 0 0 20px rgba(70, 1, 250, 0.12);
+  }
+
+  .box-small::after {
     content: '';
     position: absolute;
     top: -2rem;
@@ -187,185 +197,69 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
     border-radius: 50%;
     background: var(--color-secondary);
     filter: blur(45px);
-    opacity: 0.45;
+    opacity: 0.3;
     pointer-events: none;
   }
 
-  .box-chico-titulo {
-    color: var(--color-white);
-    font-size: 1.1rem;
+  .box-small-titulo {
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
     line-height: 1.2;
   }
 
-  .box-chico-desc {
-    color: var(--color-white);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    opacity: 0.85;
-  }
-
-  .right-side {
-    display: grid;
-    grid-template-rows: 3fr 1fr;
-    gap: 1rem;
-    height: 100%;
-  }
-
-  .boxes-arriba {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .box-derecho {
-    border: 2px solid #333;
-    background-color: var(--color-primary);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .box-derecho::after {
-    content: '';
-    position: absolute;
-    top: -2rem;
-    right: -2rem;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    background: var(--color-secondary);
-    filter: blur(45px);
-    opacity: 0.45;
-    pointer-events: none;
-  }
-
-  .box-derecho-titulo {
-    color: var(--color-white);
-    font-size: 1.2rem;
-    line-height: 1.2;
-  }
-
-  .box-derecho-desc {
-    color: var(--color-white);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    opacity: 0.85;
-  }
-
-  .box-abajo {
-    border: 2px solid #333;
-    background-color: var(--color-primary);
-    border-radius: var(--radius);
-    padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.5rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .box-abajo::after {
-    content: '';
-    position: absolute;
-    top: -2rem;
-    right: -2rem;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    background: var(--color-secondary);
-    filter: blur(45px);
-    opacity: 0.45;
-    pointer-events: none;
-  }
-
-  .box-abajo-titulo {
-    color: var(--color-white);
-    font-size: 1.2rem;
-    line-height: 1.2;
-  }
-
-  .box-abajo-desc {
-    color: var(--color-white);
-    font-size: 0.875rem;
-    line-height: 1.5;
-    opacity: 0.85;
+  .box-small-desc {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.82rem;
+    line-height: 1.55;
   }
 
   /* Responsive */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
+    .servicios-grid {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .servicios-right {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .box-grande {
+      min-height: 280px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .servicios-section {
+      padding: 3rem 1rem;
+    }
+
+    .servicios-right {
+      grid-template-columns: 1fr 1fr;
+      overflow-x: visible;
+    }
+
     .servicios-title {
       font-size: 1.8rem;
-      display: flex;
-      justify-content: center;
-      padding: 0 1rem;
     }
+  }
 
-    .servicios-container {
-      grid-template-columns: unset;
-      display: flex;
-      flex-direction: row;
-      overflow-x: auto;
-      overflow-y: visible;
-      height: auto;
-      padding: 0.5rem 1rem 1.5rem;
-      gap: 0.75rem;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-    }
-
-    .servicios-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Aplanar contenedores intermedios para que las cards queden al mismo nivel */
-    .left-side,
-    .right-side,
-    .boxes-chicos,
-    .boxes-arriba {
-      display: contents;
-    }
-
-    .box-grande,
-    .box-chico,
-    .box-derecho,
-    .box-abajo {
-      flex: 0 0 78vw;
-      min-height: 260px;
-      scroll-snap-align: start;
-      order: unset;
-    }
-
-    .box-grande-desc {
-      display: none;
+  @media (max-width: 440px) {
+    .servicios-right {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (min-width: 1440px) {
     .servicios-title {
       font-size: 2.8rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 2.5rem;
     }
-
-    .servicios-container {
-      max-width: 1380px;
-      margin: 0 auto;
-    }
-
     .box-grande-titulo { font-size: 2.2rem; }
-    .box-grande-desc   { font-size: 1.1rem; }
-    .box-chico-titulo  { font-size: 1.4rem; }
-    .box-chico-desc    { font-size: 0.95rem; }
-    .box-derecho-titulo { font-size: 1.4rem; }
-    .box-derecho-desc  { font-size: 0.95rem; }
-    .box-abajo-titulo  { font-size: 1.4rem; }
-    .box-abajo-desc    { font-size: 0.95rem; }
+    .box-grande-desc   { font-size: 1.05rem; }
+    .box-small-titulo  { font-size: 1.2rem; }
+    .box-small-desc    { font-size: 0.9rem; }
   }
 </style>

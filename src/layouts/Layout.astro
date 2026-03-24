@@ -1,15 +1,16 @@
-﻿---
+---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import ParticlesBackground from '../components/ParticlesBackground.astro';
 import '../styles/global.css';
 import 'aos/dist/aos.css';
 
-interface Props { title?: string; }
-const { title = 'Gauchino' } = Astro.props;
+interface Props { title?: string; hasHero?: boolean; }
+const { title = 'Gauchino', hasHero = false } = Astro.props;
 const lang = Astro.currentLocale ?? 'es';
 ---
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class:list={[hasHero && 'has-hero-anim']}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,11 +19,18 @@ const lang = Astro.currentLocale ?? 'es';
     <title>{title}</title>
   </head>
   <body>
-    <Navbar />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+    <!-- Particles canvas: fixed, z-index 0, behind everything -->
+    <ParticlesBackground />
+
+    <!-- Wrapper elevates all visible content above the canvas -->
+    <div class="layout-wrapper">
+      <Navbar />
+      <main>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+
     <script>
       import AOS from 'aos';
       AOS.init({
@@ -32,6 +40,7 @@ const lang = Astro.currentLocale ?? 'es';
         offset: 60,
       });
     </script>
+
     <a
       href="https://wa.me/5491140232475"
       target="_blank"
@@ -45,10 +54,23 @@ const lang = Astro.currentLocale ?? 'es';
 </html>
 
 <style>
-  main {
-    background-color: var(--color-white);
+  /* Dark background lives on the body — canvas draws transparently on top of it */
+  body {
+    background-color: var(--color-primary);
   }
 
+  /* This wrapper creates a stacking context above the canvas (z-index 0) */
+  .layout-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Main is transparent so sections without explicit backgrounds show the particles */
+  main {
+    background: transparent;
+  }
+
+  /* WhatsApp float — z-index high enough to always be on top */
   .wpp-btn {
     position: fixed;
     bottom: 1.75rem;
