@@ -18,6 +18,10 @@ export default {
   'hero.stat2.label': 'Soporte brindado',
   'hero.stat3.value': '5★',
   'hero.stat3.label': 'Calificacion promedio',
+  'hero.card1': 'Potenciado con IA',
+  'hero.card2': 'Cloud Nativo',
+  'hero.card3': 'Full Stack',
+  'hero.card4': 'Escalable',
 
   // Servicios
   'serv.heading': 'Lo que hacemos',

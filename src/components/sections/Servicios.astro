@@ -88,36 +88,36 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
 
     const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-    /* ── Mobile: simplified fade + slide ── */
+    /* ── Mobile: simple entrance animation (no pin/scrub) ── */
     if (isMobile) {
-      gsap.set(cards, { visibility: 'hidden', opacity: 0, y: 60 });
-      if (title) gsap.set(title, { visibility: 'hidden', opacity: 0, y: 30 });
+      section.style.backgroundColor = '#1a0a2e';
 
-      const mobileTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 60%',
-          end: '+=150%',
-          pin: true,
-          scrub: 2,
-        },
-      });
-
-      // Background lightens
-      mobileTl.to(section, { backgroundColor: '#1a0a2e', duration: 0.3 }, 0);
-      // Title appears
       if (title) {
-        mobileTl.to(title, { visibility: 'visible', opacity: 1, y: 0, duration: 0.15 }, 0.15);
+        gsap.from(title, {
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: title,
+            start: 'top 85%',
+          },
+        });
       }
-      // Cards stagger in
-      mobileTl.to(cards, {
-        visibility: 'visible',
-        opacity: 1,
-        y: 0,
-        duration: 0.08,
-        stagger: 0.03,
-        ease: 'back.out(1.4)',
-      }, 0.30);
+
+      cards.forEach((card, i) => {
+        gsap.from(card, {
+          opacity: 0,
+          y: 50,
+          duration: 0.5,
+          delay: i * 0.08,
+          ease: 'back.out(1.4)',
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 90%',
+          },
+        });
+      });
 
       return;
     }

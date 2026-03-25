@@ -90,7 +90,7 @@ const langLabel = lang.toUpperCase();
   .navbar {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 9999;
     background: rgba(20, 10, 45, 0.55);
     backdrop-filter: blur(22px);
     -webkit-backdrop-filter: blur(22px);
@@ -285,9 +285,8 @@ const langLabel = lang.toUpperCase();
 
   .lang-selector__dropdown {
     display: none;
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    right: 0;
+    position: fixed;
+    top: 0; right: 0;        /* valores reales seteados por JS */
     background: var(--color-primary-light);
     border: 1px solid rgba(255,255,255,0.15);
     border-radius: var(--radius);
@@ -295,7 +294,7 @@ const langLabel = lang.toUpperCase();
     padding: 0.4rem 0;
     min-width: 150px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    z-index: 200;
+    z-index: 10000;
   }
 
   .lang-selector--open .lang-selector__dropdown {
@@ -350,10 +349,18 @@ const langLabel = lang.toUpperCase();
     });
   });
 
+  const dropdown = selector.querySelector<HTMLElement>('.lang-selector__dropdown')!;
+
   btn.addEventListener('click', (e) => {
     e.stopPropagation();
     const open = selector.classList.toggle('lang-selector--open');
     btn.setAttribute('aria-expanded', String(open));
+    if (open) {
+      const rect = btn.getBoundingClientRect();
+      dropdown.style.top   = (rect.bottom + 8) + 'px';
+      dropdown.style.right = (window.innerWidth - rect.right) + 'px';
+      dropdown.style.left  = 'auto';
+    }
   });
 
   document.addEventListener('click', () => {

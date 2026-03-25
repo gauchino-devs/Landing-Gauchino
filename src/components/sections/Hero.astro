@@ -49,134 +49,35 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
       </div>
     </div>
 
-    <!-- Right: composición visual abstracta ─────────────── -->
+    <!-- Right: orb visual ───────────────────────────────────── -->
     <div class="hero-visual-container hero-image-container" id="hero-visual" aria-hidden="true">
+      <div class="orb-scene">
 
-      <!-- LAYER 1 — Glow ambiental (profundidad mínima) -->
-      <div class="parallax-layer" data-depth="0.01">
-        <div class="glow-bg"></div>
-      </div>
-
-      <!-- LAYER 2 — Formas lejanas (borrosas, muy sutiles) -->
-      <div class="parallax-layer" data-depth="0.02">
-        <svg class="geo-shape geo-far triangle-small"
-             style="top:12%;left:8%;rotate:15deg"
-             viewBox="0 0 32 36" fill="none">
-          <polygon points="16,2 31,34 1,34"
-                   stroke="rgba(70,1,250,0.25)" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <svg class="geo-shape geo-far hexagon-tiny"
-             style="bottom:18%;right:12%"
-             viewBox="0 0 28 30" fill="none">
-          <polygon points="14,2 26,8 26,22 14,28 2,22 2,8"
-                   stroke="rgba(70,1,250,0.25)" stroke-width="1.5"/>
-        </svg>
-        <svg class="geo-shape geo-far line-diagonal"
-             style="top:38%;right:7%;rotate:-35deg"
-             viewBox="0 0 44 6" fill="none">
-          <line x1="2" y1="3" x2="42" y2="3"
-                stroke="rgba(70,1,250,0.25)" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-
-      <!-- LAYER 3 — Formas medias (nítidas, moderadas) -->
-      <div class="parallax-layer" data-depth="0.04">
-        <svg class="geo-shape geo-mid hexagon-medium"
-             style="top:8%;right:18%"
-             viewBox="0 0 54 58" fill="none">
-          <polygon points="27,2 52,15.5 52,42.5 27,56 2,42.5 2,15.5"
-                   stroke="rgba(70,1,250,0.5)" stroke-width="1.5"/>
-        </svg>
-        <svg class="geo-shape geo-mid triangle-medium"
-             style="bottom:20%;left:14%;rotate:-30deg"
-             viewBox="0 0 44 48" fill="none">
-          <polygon points="22,2 43,46 1,46"
-                   stroke="rgba(70,1,250,0.45)" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <svg class="geo-shape geo-mid diamond-small"
-             style="top:54%;right:9%"
-             viewBox="0 0 36 36" fill="none">
-          <polygon points="18,1 35,18 18,35 1,18"
-                   stroke="rgba(123,91,255,0.45)" stroke-width="1.5"/>
-        </svg>
-        <svg class="geo-shape geo-mid plus-small"
-             style="bottom:42%;left:6%"
-             viewBox="0 0 20 20" fill="none">
-          <line x1="10" y1="1" x2="10" y2="19"
-                stroke="rgba(255,255,255,0.28)" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="1" y1="10" x2="19" y2="10"
-                stroke="rgba(255,255,255,0.28)" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        <svg class="geo-shape geo-mid circle-dashed"
-             style="top:26%;left:22%"
-             viewBox="0 0 34 34" fill="none">
-          <circle cx="17" cy="17" r="15"
-                  stroke="rgba(70,1,250,0.42)" stroke-width="1.5" stroke-dasharray="4 4"/>
-        </svg>
-      </div>
-
-      <!-- LAYER 4 — Elemento central (protagonista) -->
-      <div class="parallax-layer central-layer" data-depth="0.06">
-        <div class="central-element">
-          <div class="hexagon-wrapper">
-
-            <!-- Glass fill via clip-path -->
-            <div class="hex-glass-bg"></div>
-
-            <!-- Animated sweep overlay (conic-gradient rotating) -->
-            <div class="hex-sweep" aria-hidden="true"></div>
-
-            <!-- SVG border with glow filter -->
-            <svg class="hex-border-svg" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <filter id="hexGlowF" x="-40%" y="-40%" width="180%" height="180%">
-                  <feGaussianBlur stdDeviation="5" result="b"/>
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <polygon
-                points="140,4 276,72 276,208 140,276 4,208 4,72"
-                stroke="rgba(70,1,250,0.7)"
-                stroke-width="2"
-                fill="none"
-                filter="url(#hexGlowF)"
-              />
+        <!-- Central orb -->
+        <div class="orb-center">
+          <div class="orb-icon">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="40,5 75,25 75,55 40,75 5,55 5,25"
+                       stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none"/>
+              <polygon points="40,15 65,29 65,51 40,65 15,51 15,29"
+                       stroke="rgba(204,175,255,0.5)" stroke-width="1" fill="none"/>
+              <circle cx="40" cy="40" r="8" fill="white" opacity="0.9"/>
             </svg>
-
-            <!-- Punto de luz central -->
-            <div class="hex-core-light" aria-hidden="true"></div>
-
-            <!-- Hexágonos secundarios (offset, detrás) -->
-            <svg class="hex-secondary hex-s2" viewBox="0 0 200 200" fill="none">
-              <polygon points="100,3 197,51.5 197,148.5 100,197 3,148.5 3,51.5"
-                       stroke="rgba(70,1,250,0.24)" stroke-width="1.5"
-                       fill="rgba(70,1,250,0.025)"/>
-            </svg>
-            <svg class="hex-secondary hex-s3" viewBox="0 0 140 140" fill="none">
-              <polygon points="70,2 138,36 138,104 70,138 2,104 2,36"
-                       stroke="rgba(70,1,250,0.13)" stroke-width="1" fill="none"/>
-            </svg>
-
           </div>
         </div>
-      </div>
 
-      <!-- LAYER 5 — Formas cercanas (grandes, cortadas por overflow) -->
-      <div class="parallax-layer" data-depth="0.08">
-        <svg class="geo-shape geo-near triangle-large"
-             style="top:-5%;right:-6%;rotate:45deg"
-             viewBox="0 0 82 90" fill="none">
-          <polygon points="41,2 80,88 2,88"
-                   stroke="rgba(70,1,250,0.22)" stroke-width="1.5" stroke-linejoin="round"/>
-        </svg>
-        <svg class="geo-shape geo-near hexagon-lg-dash"
-             style="bottom:-8%;left:-4%"
-             viewBox="0 0 66 72" fill="none">
-          <polygon points="33,2 64,18.5 64,53.5 33,70 2,53.5 2,18.5"
-                   stroke="rgba(70,1,250,0.24)" stroke-width="1.5" stroke-dasharray="5 3"/>
-        </svg>
-      </div>
+        <!-- Orbit rings -->
+        <div class="orbit orbit-1"><div class="orbit-dot dot-1"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot dot-2"></div></div>
+        <div class="orbit orbit-3"><div class="orbit-dot dot-3"></div></div>
 
+        <!-- Floating cards -->
+        <div class="float-card float-card-1"><span class="card-icon">⚡</span><span>{t['hero.card1']}</span></div>
+        <div class="float-card float-card-2"><span class="card-icon">☁</span><span>{t['hero.card2']}</span></div>
+        <div class="float-card float-card-3"><span class="card-icon">◈</span><span>{t['hero.card3']}</span></div>
+        <div class="float-card float-card-4"><span class="card-icon">∞</span><span>{t['hero.card4']}</span></div>
+
+      </div>
     </div><!-- /hero-visual-container -->
 
   </div><!-- /hero__container -->
@@ -202,6 +103,7 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
     background-color: var(--color-primary);
     display: grid;
     grid-template-columns: 45% 55%;
+    isolation: isolate;
   }
 
   .hero__container { display: contents; }
@@ -316,189 +218,122 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
     overflow: hidden;
   }
 
-  /* ── Parallax layers ── */
-  .parallax-layer {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
+  /* ══ ORB VISUAL ════════════════════════════════════════════════ */
+
+  /* Fixed-size scene — all % positions are relative to this */
+  .orb-scene {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
   }
 
-  .central-layer {
+  /* Central orb */
+  .orb-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 200px; height: 200px;
+    margin-left: -100px; margin-top: -100px;
+    background: radial-gradient(circle, #4601FA 0%, rgba(70,1,250,0.3) 60%, transparent 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(70,1,250,0.6), 0 0 120px rgba(70,1,250,0.3);
+    animation: orb-pulse 3s ease-in-out infinite;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
   }
 
-  /* ── Central element ── */
-  .central-element {
-    position: relative;
-    transform-style: preserve-3d;
-    will-change: transform;
+  .orb-icon {
+    width: 80px; height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* ── Hexagon wrapper (280 × 280) ── */
-  .hexagon-wrapper {
-    position: relative;
-    width: 280px;
-    height: 280px;
+  .orb-icon svg { width: 100%; height: 100%; display: block; }
+
+  @keyframes orb-pulse {
+    0%, 100% { box-shadow: 0 0 60px rgba(70,1,250,0.6), 0 0 120px rgba(70,1,250,0.3); }
+    50%       { box-shadow: 0 0 80px rgba(70,1,250,0.8), 0 0 160px rgba(70,1,250,0.45); }
   }
 
-  /* Glass fill (clip-path hexagon) */
-  .hex-glass-bg {
+  /* Orbit rings */
+  .orbit {
     position: absolute;
-    inset: 0;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background: linear-gradient(135deg,
-      rgba(70,1,250,0.13) 0%,
-      rgba(45,27,90,0.88) 100%
-    );
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  }
-
-  /* Animated conic-gradient sweep — needs @property for smooth animation */
-  @property --hex-sw {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 0deg;
-  }
-  @keyframes hex-sweep-anim { to { --hex-sw: 360deg; } }
-
-  .hex-sweep {
-    position: absolute;
-    inset: 0;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    background: conic-gradient(
-      from var(--hex-sw),
-      transparent    0deg,
-      rgba(120,80,255,0.20)  16deg,
-      rgba(70,1,250,0.10)   28deg,
-      transparent   40deg
-    );
-    animation: hex-sweep-anim 4s linear infinite;
-    pointer-events: none;
-  }
-
-  /* SVG border (on top, with drop-shadow glow) */
-  .hex-border-svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    filter:
-      drop-shadow(0 0 10px rgba(70,1,250,0.6))
-      drop-shadow(0 0 35px rgba(70,1,250,0.25));
-    /* Pulse the glow */
-    animation: hex-glow-pulse 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes hex-glow-pulse {
-    0%   { filter: drop-shadow(0 0 10px rgba(70,1,250,0.6))  drop-shadow(0 0 35px rgba(70,1,250,0.25)); }
-    100% { filter: drop-shadow(0 0 18px rgba(70,1,250,0.85)) drop-shadow(0 0 60px rgba(70,1,250,0.40)); }
-  }
-
-  /* Core light */
-  .hex-core-light {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 16px; height: 16px;
-    background: radial-gradient(circle,
-      rgba(255,255,255,0.95) 0%,
-      rgba(120,80,255,0.65)  50%,
-      transparent 100%
-    );
     border-radius: 50%;
-    filter: blur(3px);
-    transform: translate(-50%, -50%);
-    animation: core-pulse 3s ease-in-out infinite;
     pointer-events: none;
   }
 
-  @keyframes core-pulse {
-    0%, 100% { opacity: 0.7; transform: translate(-50%,-50%) scale(1);   }
-    50%       { opacity: 1;   transform: translate(-50%,-50%) scale(1.7); }
+  .orbit-1 {
+    width: 260px; height: 260px;
+    left: calc(50% - 130px); top: calc(50% - 130px);
+    border: 1px solid rgba(204,175,255,0.15);
+    animation: spin-slow 20s linear infinite;
+  }
+  .orbit-2 {
+    width: 360px; height: 360px;
+    left: calc(50% - 180px); top: calc(50% - 180px);
+    border: 1px solid rgba(70,1,250,0.15);
+    animation: spin-slow 30s linear infinite;
+    animation-delay: -5s;
+  }
+  .orbit-3 {
+    width: 460px; height: 460px;
+    left: calc(50% - 230px); top: calc(50% - 230px);
+    border: 1px solid rgba(204,175,255,0.12);
+    animation: spin-slow 40s linear infinite;
+    animation-delay: -10s;
   }
 
-  /* Secondary hexagons */
-  .hex-secondary {
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Orbit dot (glowing dot that travels around the ring) */
+  .orbit-dot {
     position: absolute;
-    pointer-events: none;
-  }
-
-  .hex-s2 {
-    width: 200px; height: 200px;
-    bottom: -28px; right: -48px;
-    filter: drop-shadow(0 0 6px rgba(70,1,250,0.18));
-  }
-
-  .hex-s3 {
-    width: 140px; height: 140px;
-    bottom: -48px; right: -72px;
-    opacity: 0.65;
-  }
-
-  /* ── Ambient glow ── */
-  .glow-bg {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 480px; height: 480px;
-    background: radial-gradient(circle,
-      rgba(70,1,250,0.28) 0%,
-      rgba(70,1,250,0.08) 40%,
-      transparent 70%
-    );
-    filter: blur(80px);
+    top: -4px; left: 50%;
+    width: 8px; height: 8px;
+    margin-left: -4px;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: glow-pulse 5s ease-in-out infinite alternate;
+  }
+  .dot-1 { background: #CCAFFF; box-shadow: 0 0 10px #CCAFFF; }
+  .dot-2 { background: #4601FA; box-shadow: 0 0 12px #4601FA; }
+  .dot-3 { background: #CCAFFF; box-shadow: 0 0 10px #CCAFFF; }
+
+  /* Floating cards */
+  .float-card {
+    position: absolute;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(204,175,255,0.22);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 20;
+    color: #CCAFFF;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
     pointer-events: none;
   }
 
-  @keyframes glow-pulse {
-    0%   { opacity: 0.5; transform: translate(-50%,-50%) scale(1);    }
-    100% { opacity: 0.9; transform: translate(-50%,-50%) scale(1.08); }
-  }
+  .card-icon { font-size: 18px; }
 
-  /* ── Geometric shapes (base) ── */
-  .geo-shape { position: absolute; pointer-events: none; }
+  .float-card-1 { top: 8%;    left: 4%;  animation: float-card  9s ease-in-out infinite alternate; }
+  .float-card-2 { top: 14%;   right: 2%; animation: float-card 11s ease-in-out infinite alternate; --fcx: -6px; }
+  .float-card-3 { bottom: 14%; left: 2%; animation: float-card  8s ease-in-out infinite alternate; --fcy: 8px; }
+  .float-card-4 { bottom: 8%;  right: 4%; animation: float-card 13s ease-in-out infinite alternate; --fcx: 8px; }
 
-  /* Far layer: blurred, very subtle */
-  .geo-far { filter: blur(2px); }
-
-  /* Size + custom float vars per shape */
-  .triangle-small  { width: 32px;  height: 36px; --dur: 14s; --fx: 8px;  --fy: -12px; }
-  .hexagon-tiny    { width: 28px;  height: 30px; --dur: 16s; --fx: -10px; --fy: 8px;  }
-  .line-diagonal   { width: 44px;  height: 6px;  --dur: 18s; --fx: 6px;  --fy: -8px;  }
-
-  .hexagon-medium  { width: 54px;  height: 58px; --dur: 11s; --fx: 15px; --fy: -18px; }
-  .triangle-medium { width: 44px;  height: 48px; --dur: 13s; --fx: -12px; --fy: 10px; }
-  .diamond-small   { width: 36px;  height: 36px; --dur: 9s;  --fx: 10px; --fy: -8px;  }
-  .plus-small      { width: 20px;  height: 20px; --dur: 12s; --fx: -8px; --fy: 6px;   }
-  .circle-dashed   { width: 34px;  height: 34px; --dur: 20s; --fx: -8px; --fy: 12px;  }
-
-  .triangle-large  { width: 82px;  height: 90px; --dur: 12s; --fx: 20px; --fy: -15px; }
-  .hexagon-lg-dash { width: 66px;  height: 72px; --dur: 15s; --fx: -15px; --fy: 18px; }
-
-  /* Float animations using individual transform properties
-     (doesn't conflict with GSAP's `transform` on parent layers) */
-  .geo-far, .geo-mid, .geo-near {
-    animation: float-geo var(--dur, 12s) ease-in-out infinite alternate;
-  }
-
-  @keyframes float-geo {
+  @keyframes float-card {
     0%   { translate: 0 0; }
-    100% { translate: var(--fx, 10px) var(--fy, -10px); }
+    100% { translate: var(--fcx, 6px) var(--fcy, -8px); }
   }
-
-  /* Dashed circle also spins continuously */
-  .circle-dashed {
-    animation:
-      float-geo var(--dur) ease-in-out infinite alternate,
-      circle-spin 30s linear infinite;
-  }
-  @keyframes circle-spin { to { rotate: 360deg; } }
 
   /* ══ TYPOGRAPHY ═════════════════════════════════════════════════ */
   .hero__title {
@@ -565,8 +400,8 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
 
   /* ══ RESPONSIVE ════════════════════════════════════════════════ */
   @media (max-width: 768px) {
-    .hero                   { grid-template-columns: 1fr; min-height: auto; }
-    .hero__content          { padding: 7rem 1.5rem 2rem; }
+    .hero                   { grid-template-columns: 1fr; min-height: 100dvh; }
+    .hero__content          { padding: 7rem 1.5rem 2rem; justify-content: center; }
     .hero-visual-container  { display: none; }
     .geo-far, .geo-near     { display: none; }
     .hexagon-wrapper        { transform: scale(0.72); }
@@ -623,16 +458,8 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
   });
   gsap.set('.hero-dots-canvas', { opacity: 0 });
 
-  // Visual composition initial states
-  gsap.set('.glow-bg',          { opacity: 0, scale: 0.3 });
-  gsap.set('.central-element',  {
-    opacity: 0, scale: 0.65,
-    rotateX: isMobile ? 0 : 18,
-    rotateY: isMobile ? 0 : -15,
-    transformPerspective: 1000,
-  });
-  gsap.set('.geo-shape',        { opacity: 0, scale: 0 });
-  gsap.set('.hex-secondary',    { opacity: 0 });
+  // Float cards start hidden (revealed with container)
+  gsap.set('.float-card', { opacity: 0, scale: 0.8, y: 6 });
 
   if (navbar) gsap.set(navbar,  { clipPath: 'inset(0 100% 0 0)', opacity: 1 });
 
@@ -666,33 +493,11 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
     opacity: 1, x: 0, scale: 1, rotateY: 0, duration: 1.2,
   }, 0.5);
 
-  // Fase 5b — ambient glow ignites (t=0.65)
-  tl.to('.glow-bg', {
-    opacity: 1, scale: 1, duration: 1.4, ease: 'power2.out',
-  }, 0.65);
-
-  // Fase 5c — central hexagon materializes with 3D effect (t=0.75)
-  tl.to('.central-element', {
-    opacity: 1, scale: 1, rotateX: 0, rotateY: 0,
-    duration: 1.3, ease: 'power3.out',
-    onComplete() {
-      // Hand off to rAF loop — clear GSAP's inline transform
-      gsap.set('.central-element', { clearProps: 'transform,rotateX,rotateY' });
-      startTilt();
-    },
-  }, 0.75);
-
-  // Fase 5d — secondary hexagons fade in (t=1.1)
-  tl.to('.hex-secondary', {
-    opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power2.out',
-  }, 1.1);
-
-  // Fase 5e — geo shapes pop in staggered (t=0.95)
-  tl.to('.geo-shape', {
-    opacity: 1, scale: 1,
-    duration: 0.75, stagger: { each: 0.07, from: 'random' },
-    ease: 'back.out(1.4)',
-  }, 0.95);
+  // Float cards pop in after container arrives (t=1.0)
+  tl.to('.float-card', {
+    opacity: 1, scale: 1, y: 0,
+    duration: 0.55, stagger: 0.1, ease: 'back.out(1.6)',
+  }, 1.0);
 
   // Fase 6 — stats pop in (t=1.4)
   tl.to('.hero-stats-item', {
@@ -777,62 +582,4 @@ const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.curr
     window.removeEventListener('resize', resizeDots);
   });
 
-  /* ── Parallax + Tilt ─────────────────────────────────────────── */
-  const visualContainer = document.getElementById('hero-visual') as HTMLElement | null;
-  const centralEl       = visualContainer?.querySelector<HTMLElement>('.central-element') ?? null;
-  const layers          = visualContainer?.querySelectorAll<HTMLElement>('.parallax-layer') ?? [];
-
-  let mouseX = 0, mouseY = 0;       // normalized -1…1 from container center
-  let curX = 0, curY = 0;           // lerped current position
-  let tiltEnabled = false;          // activated after GSAP entry ends
-  let visualAnimId: number;
-
-  function startTilt(): void {
-    tiltEnabled = true;
-  }
-
-  // Track mouse relative to container center (desktop only)
-  if (!isMobile && visualContainer) {
-    visualContainer.addEventListener('mousemove', (e: MouseEvent) => {
-      const r = visualContainer.getBoundingClientRect();
-      mouseX = ((e.clientX - r.left) / r.width  - 0.5) * 2;
-      mouseY = ((e.clientY - r.top)  / r.height - 0.5) * 2;
-    });
-
-    visualContainer.addEventListener('mouseleave', () => {
-      mouseX = 0;
-      mouseY = 0;
-    });
-  }
-
-  function animateVisual(): void {
-    visualAnimId = requestAnimationFrame(animateVisual);
-
-    // Smooth lerp toward mouse position
-    curX += (mouseX - curX) * 0.05;
-    curY += (mouseY - curY) * 0.05;
-
-    // Move each parallax layer according to its depth
-    layers.forEach((layer: HTMLElement) => {
-      const depth  = parseFloat(layer.dataset.depth ?? '0.02');
-      const moveX  = curX * depth * 100;
-      const moveY  = curY * depth * 100;
-      layer.style.transform = `translate(${moveX.toFixed(2)}px, ${moveY.toFixed(2)}px)`;
-    });
-
-    // 3D tilt + idle float on central element (after entry completes)
-    if (tiltEnabled && centralEl) {
-      const floatY = Math.sin(Date.now() * 0.001) * 10;
-      const tiltX  = isMobile ? 0 : curY * -12;
-      const tiltY  = isMobile ? 0 : curX *  12;
-      centralEl.style.transform =
-        `translateY(${floatY.toFixed(2)}px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
-    }
-  }
-
-  animateVisual();
-
-  document.addEventListener('astro:before-swap', () => {
-    cancelAnimationFrame(visualAnimId);
-  });
 </script>
