@@ -1,150 +1,585 @@
-﻿---
+---
 import { useTranslations } from '../../i18n/utils';
 const t = useTranslations(Astro.currentLocale ?? 'es');
-const cotizarHref = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.currentLocale === 'pt' ? '/pt/cotizar' : '/cotizar';
-const serviciosHref = Astro.currentLocale === 'en' ? '/en/#servicios' : Astro.currentLocale === 'pt' ? '/pt/#servicios' : '/#servicios';
+const cotizarHref  = Astro.currentLocale === 'en' ? '/en/cotizar' : Astro.currentLocale === 'pt' ? '/pt/cotizar' : '/cotizar';
 const contactoHref = Astro.currentLocale === 'en' ? '/en/#contacto' : Astro.currentLocale === 'pt' ? '/pt/#contacto' : '/#contacto';
 ---
 <section id="hero" class="hero">
+
+  <!-- ── Blobs (z-index: 0) ─────────────────────────────── -->
+  <div class="hero-blob blob-1" aria-hidden="true"></div>
+  <div class="hero-blob blob-2" aria-hidden="true"></div>
+  <div class="hero-blob blob-3" aria-hidden="true"></div>
+  <div class="hero-blob blob-4" aria-hidden="true"></div>
+
+  <!-- ── Floating dots canvas (no connections) ─────────── -->
+  <canvas id="hero-dots" class="hero-dots-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── Grid container ────────────────────────────────── -->
   <div class="hero__container">
-    <div class="hero__content" data-aos="fade-right" data-aos-duration="800">
-      <h1 class="hero__title">
-        {t['hero.title1']}<br />
-        <span class="hero__title--accent">{t['hero.title2']}</span>
-      </h1>
-      <p class="hero__subtitle" data-aos="fade-right" data-aos-delay="150">
+
+    <!-- Left: texto / CTAs / stats -->
+    <div class="hero__content">
+      <div class="hero-title-wrapper">
+        <h1 class="hero__title">
+          <span class="hero-title-line">{t['hero.title1']}</span>
+          <span class="hero-title-line hero__title--accent">{t['hero.title2']}</span>
+        </h1>
+      </div>
+      <p class="hero__subtitle hero-subtitle">
         {t['hero.subtitle']}
       </p>
-      <div class="hero__actions" data-aos="fade-right" data-aos-delay="250">
-        <a href={cotizarHref} class="btn btn--primary">{t['hero.cta1']}</a>
-        <a href={contactoHref} class="btn btn--outline">{t['hero.cta2']}</a>
+      <div class="hero__actions">
+        <a href={cotizarHref}  class="btn btn--primary hero-btn">{t['hero.cta1']}</a>
+        <a href={contactoHref} class="btn btn--outline  hero-btn">{t['hero.cta2']}</a>
       </div>
-      <div class="hero__stats" data-aos="fade-up" data-aos-delay="350">
-        <div class="hero__stat"><strong>{t['hero.stat1.value']}</strong><span>{t['hero.stat1.label']}</span></div>
-        <div class="hero__stat"><strong>{t['hero.stat2.value']}</strong><span>{t['hero.stat2.label']}</span></div>
-        <div class="hero__stat"><strong>{t['hero.stat3.value']}</strong><span>{t['hero.stat3.label']}</span></div>
+      <div class="hero__stats">
+        <div class="hero__stat hero-stats-item">
+          <strong>{t['hero.stat1.value']}</strong>
+          <span>{t['hero.stat1.label']}</span>
+        </div>
+        <div class="hero__stat hero-stats-item">
+          <strong>{t['hero.stat2.value']}</strong>
+          <span>{t['hero.stat2.label']}</span>
+        </div>
+        <div class="hero__stat hero-stats-item">
+          <strong>{t['hero.stat3.value']}</strong>
+          <span>{t['hero.stat3.label']}</span>
+        </div>
       </div>
     </div>
-    <div class="hero__image" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
-      <img src="/bannerbg.png" alt="Banner Gauchino" />
-    </div>
-  </div>
+
+    <!-- Right: orb visual ───────────────────────────────────── -->
+    <div class="hero-visual-container hero-image-container" id="hero-visual" aria-hidden="true">
+      <div class="orb-scene">
+
+        <!-- Central orb -->
+        <div class="orb-center">
+          <div class="orb-icon">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="40,5 75,25 75,55 40,75 5,55 5,25"
+                       stroke="rgba(255,255,255,0.8)" stroke-width="1.5" fill="none"/>
+              <polygon points="40,15 65,29 65,51 40,65 15,51 15,29"
+                       stroke="rgba(204,175,255,0.5)" stroke-width="1" fill="none"/>
+              <circle cx="40" cy="40" r="8" fill="white" opacity="0.9"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Orbit rings -->
+        <div class="orbit orbit-1"><div class="orbit-dot dot-1"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot dot-2"></div></div>
+        <div class="orbit orbit-3"><div class="orbit-dot dot-3"></div></div>
+
+        <!-- Floating cards -->
+        <div class="float-card float-card-1"><span class="card-icon">⚡</span><span>{t['hero.card1']}</span></div>
+        <div class="float-card float-card-2"><span class="card-icon">☁</span><span>{t['hero.card2']}</span></div>
+        <div class="float-card float-card-3"><span class="card-icon">◈</span><span>{t['hero.card3']}</span></div>
+        <div class="float-card float-card-4"><span class="card-icon">∞</span><span>{t['hero.card4']}</span></div>
+
+      </div>
+    </div><!-- /hero-visual-container -->
+
+  </div><!-- /hero__container -->
 </section>
 
+<!-- ─────────────────────────────────────────────────────────────── -->
 <style>
+  /* ══ FOUC PREVENTION ══════════════════════════════════════════ */
+  .hero-blob,
+  .hero-dots-canvas,
+  .hero-title-line,
+  .hero-subtitle,
+  .hero-btn,
+  .hero-stats-item,
+  .hero-image-container {
+    visibility: hidden;
+  }
+
+  /* ══ HERO BASE ═════════════════════════════════════════════════ */
   .hero {
     position: relative;
     min-height: 100vh;
-    background-color: var(--color-white);
-    overflow: hidden;
+    background-color: var(--color-primary);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 45% 55%;
+    isolation: isolate;
   }
 
-  /* Columna izquierda: contenido hacia abajo */
+  .hero__container { display: contents; }
+
+  /* ══ BLOBS ═════════════════════════════════════════════════════ */
+  .hero-blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+  }
+  .blob-1 {
+    width: 350px; height: 350px;
+    top: -10%; left: -5%;
+    background: rgba(70,1,250,0.3);
+    filter: blur(100px);
+    animation: float-blob-1 12s ease-in-out infinite alternate;
+  }
+  .blob-2 {
+    width: 300px; height: 400px;
+    top: -15%; right: -10%;
+    background: rgba(55,0,200,0.25);
+    filter: blur(120px);
+    animation: float-blob-2 15s ease-in-out infinite alternate;
+  }
+  .blob-3 {
+    width: 250px; height: 250px;
+    bottom: -10%; left: 10%;
+    background: rgba(70,1,250,0.2);
+    filter: blur(80px);
+    animation: float-blob-3 10s ease-in-out infinite alternate;
+  }
+  .blob-4 {
+    width: 400px; height: 350px;
+    top: 20%; right: 5%;
+    background: rgba(70,1,250,0.35);
+    filter: blur(110px);
+    animation: float-blob-4 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes float-blob-1 {
+    0%   { transform: translate(0px,   0px)  rotate(0deg)  scale(1);    }
+    25%  { transform: translate(8px,  -12px) rotate(1deg)  scale(1.01); }
+    50%  { transform: translate(-6px,  7px)  rotate(-1deg) scale(0.99); }
+    75%  { transform: translate(10px,  4px)  rotate(1deg)  scale(1.01); }
+    100% { transform: translate(4px,  -6px)  rotate(1deg)  scale(1.01); }
+  }
+  @keyframes float-blob-2 {
+    0%   { transform: translate(0px,   0px)  rotate(0deg)  scale(1);    }
+    25%  { transform: translate(-9px,  8px)  rotate(-1deg) scale(1.01); }
+    50%  { transform: translate(7px,  -9px)  rotate(1deg)  scale(0.99); }
+    75%  { transform: translate(-5px,  11px) rotate(-1deg) scale(1.01); }
+    100% { transform: translate(-4px,  6px)  rotate(-1deg) scale(1.01); }
+  }
+  @keyframes float-blob-3 {
+    0%   { transform: translate(0px,   0px)  rotate(0deg)  scale(1);    }
+    25%  { transform: translate(11px,  5px)  rotate(1deg)  scale(0.99); }
+    50%  { transform: translate(-7px, -10px) rotate(-1deg) scale(1.01); }
+    75%  { transform: translate(6px,   9px)  rotate(1deg)  scale(0.99); }
+    100% { transform: translate(5px,  -4px)  rotate(1deg)  scale(0.99); }
+  }
+  @keyframes float-blob-4 {
+    0%   { transform: translate(0px,   0px)  rotate(0deg)  scale(1);    }
+    25%  { transform: translate(-8px, -7px)  rotate(-1deg) scale(1.01); }
+    50%  { transform: translate(10px,  8px)  rotate(1deg)  scale(0.99); }
+    75%  { transform: translate(-6px, -4px)  rotate(-1deg) scale(1.01); }
+    100% { transform: translate(-4px,  3px)  rotate(-1deg) scale(1.01); }
+  }
+
+  /* ══ DOTS CANVAS ═══════════════════════════════════════════════ */
+  .hero-dots-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  /* ══ LEFT CONTENT ══════════════════════════════════════════════ */
   .hero__content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    gap: 1.5rem;
-    padding: 8rem 2rem 8rem 1rem;
+    justify-content: center;
+    gap: 1.75rem;
+    padding: 8rem 2rem 4rem 1rem;
     padding-left: max(2rem, calc((90vw - var(--max-width)) / 2));
+    position: relative;
+    z-index: 1;
   }
 
-  /* Columna derecha: imagen pegada abajo */
-  .hero__image {
+  .hero-title-wrapper { perspective: 800px; }
+
+  .hero-title-line {
+    display: block;
+    transform-origin: center bottom;
+  }
+
+  /* ══ RIGHT VISUAL CONTAINER ════════════════════════════════════ */
+  .hero-visual-container {
+    position: relative;
+    z-index: 1;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
+    margin-right: -60px;
+    margin-top: -40px;
+    margin-bottom: -40px;
+    min-height: 500px;
+    /* perspective here makes children's rotateX/Y render in 3D */
+    perspective: 1000px;
     overflow: hidden;
   }
 
-  .hero__image img {
-    height: 90vh;
-    width: auto;
-    max-width: none;
-    object-fit: contain;
-    object-position: bottom center;
-    display: block;
+  /* ══ ORB VISUAL ════════════════════════════════════════════════ */
+
+  /* Fixed-size scene — all % positions are relative to this */
+  .orb-scene {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
   }
 
-  /* Elimina el wrapper .hero__container del flujo, ya no lo necesitamos */
-  .hero__container {
-    display: contents;
+  /* Central orb */
+  .orb-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 200px; height: 200px;
+    margin-left: -100px; margin-top: -100px;
+    background: radial-gradient(circle, #4601FA 0%, rgba(70,1,250,0.3) 60%, transparent 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 60px rgba(70,1,250,0.6), 0 0 120px rgba(70,1,250,0.3);
+    animation: orb-pulse 3s ease-in-out infinite;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  @media (max-width: 768px) {
-    .hero {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      min-height: auto;
-    }
-    .hero__content {
-      padding: 7rem 1.5rem 3rem;
-    }
-    .hero__image {
-      display: none;
-    }
+  .orb-icon {
+    width: 80px; height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .hero__badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.12);
-    color: var(--color-secondary-light);
-    font-size: 0.85rem;
-    padding: 0.4rem 1rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,0.2);
-    width: fit-content;
+  .orb-icon svg { width: 100%; height: 100%; display: block; }
+
+  @keyframes orb-pulse {
+    0%, 100% { box-shadow: 0 0 60px rgba(70,1,250,0.6), 0 0 120px rgba(70,1,250,0.3); }
+    50%       { box-shadow: 0 0 80px rgba(70,1,250,0.8), 0 0 160px rgba(70,1,250,0.45); }
   }
 
+  /* Orbit rings */
+  .orbit {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .orbit-1 {
+    width: 260px; height: 260px;
+    left: calc(50% - 130px); top: calc(50% - 130px);
+    border: 1px solid rgba(204,175,255,0.15);
+    animation: spin-slow 20s linear infinite;
+  }
+  .orbit-2 {
+    width: 360px; height: 360px;
+    left: calc(50% - 180px); top: calc(50% - 180px);
+    border: 1px solid rgba(70,1,250,0.15);
+    animation: spin-slow 30s linear infinite;
+    animation-delay: -5s;
+  }
+  .orbit-3 {
+    width: 460px; height: 460px;
+    left: calc(50% - 230px); top: calc(50% - 230px);
+    border: 1px solid rgba(204,175,255,0.12);
+    animation: spin-slow 40s linear infinite;
+    animation-delay: -10s;
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  /* Orbit dot (glowing dot that travels around the ring) */
+  .orbit-dot {
+    position: absolute;
+    top: -4px; left: 50%;
+    width: 8px; height: 8px;
+    margin-left: -4px;
+    border-radius: 50%;
+  }
+  .dot-1 { background: #CCAFFF; box-shadow: 0 0 10px #CCAFFF; }
+  .dot-2 { background: #4601FA; box-shadow: 0 0 12px #4601FA; }
+  .dot-3 { background: #CCAFFF; box-shadow: 0 0 10px #CCAFFF; }
+
+  /* Floating cards */
+  .float-card {
+    position: absolute;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(204,175,255,0.22);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 10px 18px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 20;
+    color: #CCAFFF;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .card-icon { font-size: 18px; }
+
+  .float-card-1 { top: 8%;    left: 4%;  animation: float-card  9s ease-in-out infinite alternate; }
+  .float-card-2 { top: 14%;   right: 2%; animation: float-card 11s ease-in-out infinite alternate; --fcx: -6px; }
+  .float-card-3 { bottom: 14%; left: 2%; animation: float-card  8s ease-in-out infinite alternate; --fcy: 8px; }
+  .float-card-4 { bottom: 8%;  right: 4%; animation: float-card 13s ease-in-out infinite alternate; --fcx: 8px; }
+
+  @keyframes float-card {
+    0%   { translate: 0 0; }
+    100% { translate: var(--fcx, 6px) var(--fcy, -8px); }
+  }
+
+  /* ══ TYPOGRAPHY ═════════════════════════════════════════════════ */
   .hero__title {
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--color-primary);
-    line-height: 1.15;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.08;
     letter-spacing: -0.03em;
   }
-
-  .hero__title--accent { color: var(--color-secondary); }
+  .hero__title--accent { color: var(--color-secondary-light); }
 
   .hero__subtitle {
     font-size: 1.125rem;
-    color: var(--color-primary-light);
-    max-width: 560px;
+    color: rgba(255,255,255,0.6);
+    max-width: 480px;
     line-height: 1.7;
   }
 
   .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-  
+
   .btn {
     display: inline-block;
-    padding: 0.75rem 1.75rem;
-    border-radius: var(--radius);
+    padding: 0.8rem 1.75rem;
+    border-radius: 999px;
     font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s ease;
+    letter-spacing: 0.01em;
+  }
+  .btn--primary {
+    background-color: var(--color-secondary);
+    color: #fff;
+    box-shadow: 0 0 24px rgba(70,1,250,0.45);
+  }
+  .btn--primary:hover {
+    background-color: var(--color-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 32px rgba(70,1,250,0.65);
+  }
+  .btn--outline {
+    border: 2px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+    background: transparent;
+  }
+  .btn--outline:hover {
+    border-color: rgba(255,255,255,0.65);
+    color: #fff;
+    background: rgba(255,255,255,0.08);
+    transform: translateY(-2px);
   }
 
-  .btn--primary { background-color: var(--color-secondary); color: #fff; }
-
-  .btn--primary:hover { background-color: var(--color-secondary-hover); transform: translateY(-1px); }
-
-  .btn--outline { border: 2px solid var(--color-secondary); color: var(--color-primary); }
-
-  .btn--outline:hover { background: var(--color-secondary); color: var(--color-white); transform: translateY(-1px); }
-
-  .hero__stats {
+  /* ══ STATS ══════════════════════════════════════════════════════ */
+  .hero__stats { display: flex; gap: 2rem; padding-top: 0.5rem; flex-wrap: wrap; }
+  .hero__stat {
     display: flex;
-    gap: 3rem;
-    padding-top: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.2rem;
+    transition: transform 0.2s ease;
+  }
+  .hero__stat:hover { transform: translateY(-2px); }
+  .hero__stat strong { font-size: 1.6rem; font-weight: 700; color: #fff; line-height: 1; }
+  .hero__stat span   { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 500; letter-spacing: 0.02em; }
+
+  /* ══ RESPONSIVE ════════════════════════════════════════════════ */
+  @media (max-width: 768px) {
+    .hero                   { grid-template-columns: 1fr; min-height: 100dvh; }
+    .hero__content          { padding: 7rem 1.5rem 2rem; justify-content: center; }
+    .hero-visual-container  { display: none; }
+    .geo-far, .geo-near     { display: none; }
+    .hexagon-wrapper        { transform: scale(0.72); }
+    .hero__stats            { gap: 0.6rem; }
+    .hero__stat             { flex: 1; min-width: 0; }
+    .blob-1                 { width: 220px; height: 220px; }
+    .blob-2                 { width: 180px; height: 240px; }
+    .blob-3                 { width: 160px; height: 160px; }
+    .blob-4                 { width: 250px; height: 180px; }
   }
 
-  .hero__stat { display: flex; flex-direction: column; }
-
-  .hero__stat strong { font-size: 2rem; font-weight: 700; color: var(--color-secondary-light); line-height: 1; }
-
-  .hero__stat span  { font-size: 0.85rem; color: var(--color-primary-light); margin-top: 0.25rem; }
+  @media (max-width: 480px) {
+    .hero__stats        { flex-direction: column; }
+    .hero__stat         { flex-direction: row; align-items: center; justify-content: space-between; }
+    .hero__stat strong  { font-size: 1.4rem; }
+    .hero-visual-container { min-height: 260px; }
+  }
 </style>
+
+
+<script>
+  import gsap from 'gsap';
+
+  const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+
+  /* ── Step 1: FOUC prevention — make everything visible immediately ── */
+  gsap.set([
+    '.hero-blob', '.hero-dots-canvas', '.hero-title-line',
+    '.hero-subtitle', '.hero-btn', '.hero-stats-item', '.hero-image-container',
+  ], { visibility: 'visible' });
+
+  // CSS (html.has-hero-anim .navbar) already hides the navbar before paint.
+  // GSAP's set overrides it immediately so GSAP can control the reveal.
+  const navbar = document.querySelector<HTMLElement>('.navbar');
+  if (navbar) gsap.set(navbar, { visibility: 'visible' });
+
+  /* ── Step 2: initial animation states ──────────────────────────── */
+  gsap.set('.hero-blob',        { opacity: 0, scale: 0.3 });
+  gsap.set('.hero-title-line',  {
+    opacity: 0,
+    y: isMobile ? 40 : 80,
+    rotateX: isMobile ? 0 : 40,
+    transformPerspective: isMobile ? 0 : 800,
+  });
+  gsap.set('.hero-subtitle',    { opacity: 0, y: 30 });
+  gsap.set('.hero-btn',         { opacity: 0, y: 30, scale: 0.85 });
+  gsap.set('.hero-stats-item',  { opacity: 0, y: 40, scale: 0.9 });
+  gsap.set('.hero-image-container', {
+    opacity: 0,
+    x: isMobile ? 0 : 120,
+    scale: isMobile ? 0.95 : 0.85,
+    rotateY: isMobile ? 0 : -8,
+    transformPerspective: isMobile ? 0 : 1000,
+  });
+  gsap.set('.hero-dots-canvas', { opacity: 0 });
+
+  // Float cards start hidden (revealed with container)
+  gsap.set('.float-card', { opacity: 0, scale: 0.8, y: 6 });
+
+  if (navbar) gsap.set(navbar,  { clipPath: 'inset(0 100% 0 0)', opacity: 1 });
+
+  /* ── Step 3: entry timeline ─────────────────────────────────────── */
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  // Fase 1 — blobs expand (t=0)
+  tl.to('.hero-blob', {
+    opacity: 1, scale: 1,
+    duration: 1.2, stagger: 0.15,
+    ease: 'power2.out', clearProps: 'transform',
+  }, 0);
+
+  // Fase 2 — title lines 3D reveal (t=0.3)
+  tl.to('.hero-title-line', {
+    opacity: 1, y: 0, rotateX: 0,
+    duration: 0.8, stagger: 0.12,
+  }, 0.3);
+
+  // Fase 3 — subtitle (t=0.9)
+  tl.to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 0.9);
+
+  // Fase 4 — buttons elastic (t=1.1)
+  tl.to('.hero-btn', {
+    opacity: 1, y: 0, scale: 1,
+    duration: 0.7, stagger: 0.1, ease: 'back.out(1.7)',
+  }, 1.1);
+
+  // Fase 5 — visual container flies in from right (t=0.5)
+  tl.to('.hero-image-container', {
+    opacity: 1, x: 0, scale: 1, rotateY: 0, duration: 1.2,
+  }, 0.5);
+
+  // Float cards pop in after container arrives (t=1.0)
+  tl.to('.float-card', {
+    opacity: 1, scale: 1, y: 0,
+    duration: 0.55, stagger: 0.1, ease: 'back.out(1.6)',
+  }, 1.0);
+
+  // Fase 6 — stats pop in (t=1.4)
+  tl.to('.hero-stats-item', {
+    opacity: 1, y: 0, scale: 1,
+    duration: 0.5, stagger: 0.1, ease: 'back.out(1.4)',
+  }, 1.4);
+
+  // Fase 7 — navbar left-to-right wipe (t=0.6)
+  if (navbar) {
+    tl.to(navbar, {
+      clipPath: 'inset(0 0% 0 0)', duration: 0.9, ease: 'power3.out',
+    }, 0.6);
+  }
+
+  // Fase 8 — dots fade in (t=1.5)
+  tl.to('.hero-dots-canvas', { opacity: 1, duration: 1.5, ease: 'power1.in' }, 1.5);
+
+  /* ── Hero dots canvas ────────────────────────────────────────── */
+  const heroEl     = document.getElementById('hero') as HTMLElement;
+  const dotsCanvas = document.getElementById('hero-dots') as HTMLCanvasElement;
+  const dotsCtx    = dotsCanvas.getContext('2d')!;
+  const DOT_COUNT  = isMobile ? 30 : 60;
+
+  function resizeDots(): void {
+    dotsCanvas.width  = heroEl.offsetWidth;
+    dotsCanvas.height = heroEl.offsetHeight;
+  }
+  window.addEventListener('resize', resizeDots);
+
+  class Dot {
+    x: number; y: number; vx: number; vy: number;
+    radius: number; opacity: number;
+    twinkleSpeed: number; twinkleOffset: number; currentOpacity: number;
+
+    constructor() {
+      this.x             = Math.random() * dotsCanvas.width;
+      this.y             = Math.random() * dotsCanvas.height;
+      this.vx            = (Math.random() - 0.5) * 0.4;
+      this.vy            = (Math.random() - 0.5) * 0.4;
+      this.radius        = Math.random() * 2 + 0.5;
+      this.opacity       = 0.2 + Math.random() * 0.5;
+      this.twinkleSpeed  = 0.005 + Math.random() * 0.01;
+      this.twinkleOffset = Math.random() * Math.PI * 2;
+      this.currentOpacity = 0;
+    }
+
+    update(time: number): void {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0)                 this.x = dotsCanvas.width;
+      if (this.x > dotsCanvas.width)  this.x = 0;
+      if (this.y < 0)                 this.y = dotsCanvas.height;
+      if (this.y > dotsCanvas.height) this.y = 0;
+      this.currentOpacity = this.opacity * (0.5 + 0.5 * Math.sin(time * this.twinkleSpeed + this.twinkleOffset));
+    }
+
+    draw(): void {
+      dotsCtx.beginPath();
+      dotsCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      dotsCtx.fillStyle = `rgba(196,181,253,${this.currentOpacity.toFixed(3)})`;
+      dotsCtx.fill();
+    }
+  }
+
+  let dots: Dot[] = [];
+  let dotsAnimId: number;
+
+  function animateDots(time: number): void {
+    dotsCtx.clearRect(0, 0, dotsCanvas.width, dotsCanvas.height);
+    dots.forEach(d => { d.update(time); d.draw(); });
+    dotsAnimId = requestAnimationFrame(animateDots);
+  }
+
+  requestAnimationFrame(() => {
+    resizeDots();
+    dots = Array.from({ length: DOT_COUNT }, () => new Dot());
+    animateDots(0);
+  });
+
+  document.addEventListener('astro:before-swap', () => {
+    cancelAnimationFrame(dotsAnimId);
+    window.removeEventListener('resize', resizeDots);
+  });
+
+</script>

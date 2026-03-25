@@ -1,192 +1,251 @@
-﻿---
+---
 import { useTranslations } from '../../i18n/utils';
 const t = useTranslations(Astro.currentLocale ?? 'es');
 ---
-<div class="clientes-container" id="clientes">
-  <!-- Parte Superior -->
-  <div class="parte-superior">
-    <div class="bloque-texto" data-aos="fade-right" data-aos-duration="700">
-      <h2 class="clientes-title">{t['cli.title1']} <span class="highlight">{t['cli.title2']}</span></h2>
-      <p class="bloque-parrafo">{t['cli.desc']}</p>
+<div id="clientes">
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+        <span class="stat-num">150%</span>
+        <span class="stat-label">{t['cli.stat1.label']}</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">{t['cli.stat2.label']}</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">{t['cli.stat3.label']}</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">{t['cli.stat4.label']}</span>
+      </div>
     </div>
-    <div class="cuadro-grande" data-aos="fade-left" data-aos-duration="700" data-aos-delay="150">
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat1.label']}</span></div>
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat2.label']}</span></div>
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat3.label']}</span></div>
-      <div class="celda"><span class="celda-num">100%</span><span class="celda-sep"></span><span class="celda-label">{t['cli.stat4.label']}</span></div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="quote-mark">&ldquo;</div>
+        <p class="review-text">{t['cli.review1.text']}</p>
+        <div class="review-footer">
+          <div class="avatar">K</div>
+          <p class="review-author">{t['cli.review1.author']}</p>
+        </div>
+      </div>
+
+      <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="quote-mark">&ldquo;</div>
+        <p class="review-text">{t['cli.review2.text']}</p>
+        <div class="review-footer">
+          <div class="avatar">M</div>
+          <p class="review-author">{t['cli.review2.author']}</p>
+        </div>
+      </div>
+
+      <div class="cta-card" data-aos="fade-up" data-aos-delay="300">
+        <p class="cta-titulo">{t['cli.cta.title']}</p>
+        <a href="#contacto" class="cta-btn">{t['cli.cta.btn']}</a>
+      </div>
     </div>
-  </div>
-  
-  <!-- Parte Inferior -->
-  <h3 class="inferior-titulo" data-aos="fade-up">{t['cli.reviews.heading']}</h3>
-  <div class="parte-inferior">
-    <div class="resena-1" data-aos="fade-up" data-aos-delay="100">
-      <p class="resena-autor">{t['cli.review1.author']}</p>
-      <span class="resena-sep"></span>
-      <p class="resena-texto">{t['cli.review1.text']}</p>
-    </div>
-    <div class="resena-2" data-aos="fade-up" data-aos-delay="200">
-      <p class="resena-autor">{t['cli.review2.author']}</p>
-      <span class="resena-sep"></span>
-      <p class="resena-texto">{t['cli.review2.text']}</p>
-    </div>
-    <div class="cta" data-aos="fade-up" data-aos-delay="300">
-      <p class="cta-titulo">{t['cli.cta.title']}</p>
-      <a href="#contacto" class="cta-btn">{t['cli.cta.btn']}</a>
-    </div>
-  </div>
+  </section>
+
 </div>
 
 <style>
-  .clientes-title {
-    color: var(--color-primary);
-    font-size: 2.2rem;
-    line-height: 1.2;
-    margin-bottom: 1.25rem;
-  }
-
-  .highlight {
-    color: var(--color-secondary);
-  }
-
-  .bloque-parrafo {
-    color: var(--color-primary);
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  .clientes-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    padding: 1rem;
-    gap: 1rem;
-  }
-
-  .parte-superior {
-    flex: 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
-
-  .bloque-texto {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-  }
-
-  .cuadro-grande {
-    display: grid;
-    gap: 0.5rem;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    
-  }
-
-  .celda {
-    background-color: var(--color-primary);
-    display: flex;
-    border-radius: var(--radius);
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1.2rem;
-    border: 1px solid rgba(70, 1, 250, 0.15);
+  /* ─── Stats ─── */
+  .stats-section {
+    padding: 4.5rem 2rem;
+    background: linear-gradient(145deg, #1a0e3c 0%, #2D1B5A 45%, #1c1040 100%);
     position: relative;
     overflow: hidden;
   }
 
-  .celda::after {
+  .stats-section::before {
     content: '';
     position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    background: var(--color-secondary);
-    filter: blur(45px);
-    opacity: 0.45;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(70, 1, 250, 0.18) 0%, transparent 45%),
+      radial-gradient(circle at 85% 50%, rgba(70, 1, 250, 0.12) 0%, transparent 45%);
     pointer-events: none;
   }
 
-  .celda-num {
-    font-size: 2.4rem;
+  .stats-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
     font-weight: 800;
-    color: var(--color-secondary-light);
+    color: #fff;
     line-height: 1;
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
   }
 
-  .celda-label {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-white);
-    letter-spacing: 0.03em;
+  .stat-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .parte-inferior {
-    flex: 1;
+  .stat-divider {
+    width: 1px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+  }
+
+  /* ─── Testimonials ─── */
+  .testimonials-section {
+    padding: 3rem 2rem 4.5rem;
+    padding-left: max(2rem, calc((100vw - var(--max-width)) / 2));
+    padding-right: max(2rem, calc((100vw - var(--max-width)) / 2));
+  }
+
+  .testimonials-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
   }
 
-  .resena-1,
-  .resena-2 {
-    background-color: var(--color-primary);
+  .testimonial-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: var(--radius);
-    padding: 1.75rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
 
-  .resena-autor {
-    font-size: 1rem;
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    border-color: rgba(70, 1, 250, 0.3);
+  }
+
+  .quote-mark {
+    font-size: 3.5rem;
     font-weight: 700;
     color: var(--color-secondary-light);
-    letter-spacing: 0.04em;
+    line-height: 0.7;
+    font-family: Georgia, 'Times New Roman', serif;
+    opacity: 0.55;
+    user-select: none;
   }
 
-  .resena-sep {
-    display: block;
-    width: 2.5rem;
-    height: 2px;
-    background: var(--color-secondary);
-    border-radius: 999px;
+  .review-text {
+    color: var(--color-text-light);
+    font-size: 0.93rem;
+    line-height: 1.7;
+    flex: 1;
   }
 
-  .resena-texto {
-    font-size: 0.97rem;
-    line-height: 1.65;
-    color: var(--color-white);
+  .review-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(45, 27, 90, 0.12);
+    margin-top: auto;
   }
 
-  .inferior-titulo {
-    font-size: 1.2rem;
+  .avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-secondary) 0%, #8b5cf6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(70, 1, 250, 0.4);
+  }
+
+  .review-author {
+    font-size: 0.88rem;
     font-weight: 600;
-    color: var(--color-primary);
-    padding: 0 0.25rem;
+    color: var(--color-primary-light);
+    line-height: 1.2;
   }
 
-  .cta {
-    background-color: var(--color-primary);
+  /* ─── CTA Card ─── */
+  .cta-card {
+    background: linear-gradient(145deg, rgba(70,1,250,0.45) 0%, #1a0e3c 100%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius);
-    padding: 1.75rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .cta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(70, 1, 250, 0.2);
+  }
+
+  .cta-card::after {
+    content: '';
+    position: absolute;
+    top: -3rem;
+    right: -3rem;
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    filter: blur(65px);
+    opacity: 0.3;
+    pointer-events: none;
   }
 
   .cta-titulo {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-white);
-    line-height: 1.35;
+    color: #fff;
+    line-height: 1.3;
+    position: relative;
+    z-index: 1;
   }
 
   .cta-btn {
@@ -194,88 +253,57 @@ const t = useTranslations(Astro.currentLocale ?? 'es');
     align-self: flex-start;
     padding: 0.65rem 1.5rem;
     border-radius: 999px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     background-color: var(--color-secondary);
-    color: var(--color-white);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 18px 4px rgba(204, 175, 255, 0.45);
-    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+    color: #fff;
+    box-shadow: 0 0 18px rgba(70, 1, 250, 0.45);
+    transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+    z-index: 1;
+    white-space: nowrap;
   }
 
   .cta-btn:hover {
     background-color: #6117ff;
-    box-shadow: 0 0 15px 3px rgba(174, 127, 254, 0.6);
+    box-shadow: 0 0 26px rgba(97, 23, 255, 0.6);
+    transform: translateY(-2px);
   }
 
-  /* Responsive */
-  @media (max-width: 768px) {
-    .clientes-container {
-      padding: 1rem;
-      gap: 1rem;
-      height: auto;
+  /* ─── Responsive ─── */
+  @media (max-width: 900px) {
+    .stats-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
     }
-
-    .parte-superior {
-      grid-template-columns: 1fr;
+    .stat-divider {
+      display: none;
     }
-
-    .bloque-texto {
-      order: 1;
-      padding: 1.5rem;
+    .testimonials-grid {
+      grid-template-columns: 1fr 1fr;
     }
-
-    .cuadro-grande {
-      order: 2;
-      min-height: 250px;
-    }
-
-    .parte-inferior {
-      grid-template-columns: 1fr;
-    }
-
-    .resena-1 {
-      order: 3;
-    }
-
-    .resena-2 {
-      order: 4;
-    }
-
-    .cta {
-      order: 5;
+    .cta-card {
+      grid-column: span 2;
     }
   }
 
-  @media (max-width: 480px) {
-    .clientes-container {
-      padding: 0.5rem;
+  @media (max-width: 600px) {
+    .stats-section {
+      padding: 3rem 1.5rem;
     }
-
-    .bloque-texto {
-      padding: 1rem;
+    .testimonials-section {
+      padding: 2rem 1rem 3rem;
     }
-
-    .resena-1,
-    .resena-2,
-    .cta {
-      padding: 1rem;
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+    }
+    .cta-card {
+      grid-column: span 1;
     }
   }
 
   @media (min-width: 1440px) {
-    .clientes-container {
-      max-width: 1380px;
-      margin: 0 auto;
-    }
-
-    .clientes-title { font-size: 2.8rem; }
-    .bloque-parrafo { font-size: 1.1rem; }
-    .celda-num      { font-size: 3.2rem; }
-    .celda-label    { font-size: 1.75rem; }
-    .inferior-titulo { font-size: 1.4rem; }
-    .resena-autor   { font-size: 1.1rem; }
-    .resena-texto   { font-size: 1.05rem; }
-    .cta-titulo     { font-size: 1.3rem; }
+    .stat-num { font-size: 5.5rem; }
+    .stat-label { font-size: 0.95rem; }
   }
 </style>
